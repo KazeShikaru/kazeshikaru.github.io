@@ -25,6 +25,8 @@ body {
     border-radius: 4px;
     border: 2px solid purple;
     transition-duration: 0.4s;
+    background-image: url("ButtonBlueV2.jpg");
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
     .button:hover {
@@ -37,6 +39,7 @@ body {
         font-size: 16px;
         border-radius: 4px;
         border: 2px solid purple;
+        background-image: url("ButtonBlueV2RedMoon.jpg");
     }
 
     .button:active {
@@ -50,4 +53,5 @@ body {
         border-radius: 4px;
         border: 2px solid #0e0043;
         transition-duration: 0.1s;
+        background-image: url("ButtonBlueV2YellowMoon.jpg");
     }
