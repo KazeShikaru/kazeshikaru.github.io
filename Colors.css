@@ -3,10 +3,12 @@ p {
     color: white;
     background-color: gray;
 }
+
 h1 {
     color: black;
     background-color: red;
 }
+
 body {
     /*
         background-image: url("monix gif.gif");
@@ -55,3 +57,7 @@ body {
         transition-duration: 0.1s;
         background-image: url("ButtonBlueV2YellowMoon.jpg");
     }
+
+.Hoverable:hover {
+    background-color: aquamarine;
+}
