@@ -6,15 +6,24 @@ p {
 
 h1 {
     color: black;
-    background-color: red;
+    background-color: darkmagenta;
 }
 
 body {
     /*
         background-image: url("monix gif.gif");
     */
-    background-color: black;
+    background-color: purple;
 }
+
+.Link {
+    color: deeppink;
+}
+
+    .Link:hover {
+        color:purple;
+    }
+
 
 .button {
     background-color: #4400ff;
@@ -42,6 +51,7 @@ body {
         border-radius: 4px;
         border: 2px solid purple;
         background-image: url("ButtonBlueV2RedMoon.jpg");
+        
     }
 
     .button:active {
