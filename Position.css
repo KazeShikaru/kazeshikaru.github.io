@@ -27,14 +27,18 @@ table, th, tr {
     border-color: aquamarine;
     border-bottom: 1px solid white;
     position: static;
+   
     
     /*
 border-collapse: collapse;
     */
 }
 table {
-   
-
+    border-radius: 2px;
+    -moz-border-radius: 6px;
+    width: 200%;
+    height: auto;
+    top: 40px;
 }
 
 
