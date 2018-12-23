@@ -1,46 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-   
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin:auto;
 
-}
-</style>
-
+<link rel="stylesheet" type="text/css" href="UBE.css" media="all">
 </head>
-<body style="background-color:black">
-<canvas id="canvas" width="971" height="600" >
+<body onload="startGame()">
+
 <script>
-var context = canvas.getContext('2d');
 
-      var imageObj = new Image();
+var bakcground;
+var playbutton;
 
-      imageObj.onload = function() {
-        context.drawImage(imageObj, 0, 0);
-      };
-      imageObj.src = "startscreen1.png";
-      
-      function button(color, x,y,width,height,color){
-      		this.width = width;
-    		this.height = height;
-   			this.x = x;
-    		this.y = y;    
-    		ctx = myGameArea.context;
-    		ctx.fillStyle = color;
-    		ctx.fillRect(this.x, this.y, this.width, this.height);
-      }
+function startGame() {
+playbutton = new buttonMage(400,200," https://www.iconspng.com/images/aquabutton/aquabutton.jpg",500,400);
+    bakcground = new drawMage(971, 600, "startscreen1.png", 0, 0);
+    
+   
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 971;
+        this.canvas.height = 600;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 30);
+        },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    }
+}
+
+function drawMage(width, height, color, x, y ) {
+    
+   
+    this.image = new Image();
+    this.image.src = color;
+    
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
+        
+    }
+    
+}
+function buttonMage(width, height, color, x, y ) {
+    
+   
+    this.image = new Image();
+    this.image.src = color;
+    
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
+                
+        
+    }
+    
+    
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    bakcground.update();
+    playbutton.update();
+}
+
+
 </script>
 
-</canvas>
+
+
+
 </body>
 </html>
