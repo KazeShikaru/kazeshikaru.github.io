@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+   
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+
+}
+</style>
+
+</head>
+<body style="background-color:black">
+<canvas id="canvas" width="971" height="600" >
+<script>
+var context = canvas.getContext('2d');
+
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 0, 0);
+      };
+      imageObj.src = "startscreen1.png";
+      
+      function button(color, x,y,width,height,color){
+      		this.width = width;
+    		this.height = height;
+   			this.x = x;
+    		this.y = y;    
+    		ctx = myGameArea.context;
+    		ctx.fillStyle = color;
+    		ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+</script>
+
+</canvas>
+</body>
+</html>
