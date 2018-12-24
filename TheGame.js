@@ -2,7 +2,9 @@ var canvas = document.querySelector('canvas');
 
 canvas.width = 971;
 canvas.height = 600;
-
+//canvas.addEventListener('mouse_down',rose());
+canvas.addEventListener("click", rose);
+canvas.addEventListener("mousedown",function(event){ arr(event);});
 var c = canvas.getContext('2d');
 c.fillRect(0, 0, 400, 500);
 c.stroke();
@@ -10,8 +12,18 @@ c.stroke();
 
 var images = [new Image(), new Image()];
 
+function arr(event){
+  console.log(event);
+  if(event.clientX>300 && event.clientY>300){
+    c.clearRect(0,0,981,600);
+  }
+}
 
 function rose() {
+  if(event.clientX>300 && event.clientY>300){
+  return;
+  }
+  console.log("Hello world!");
   for (var i = 0; i < images.length; i++) {
     var why = images[i];
     switch (i) {
@@ -25,7 +37,7 @@ function rose() {
     why.onload = soup;
   }
 }
-rose();
+
 /*
 var background = new Image();
 var button = new Image();
