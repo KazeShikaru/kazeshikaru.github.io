@@ -13,9 +13,9 @@ var playbutton;
 
 function startGame() {
 playbutton = new buttonMage(400,200," https://www.iconspng.com/images/aquabutton/aquabutton.jpg",500,400);
-    bakcground = new drawMage(971, 600, "startscreen1.png", 0, 0);
-    
-   
+bakcground = new drawMage(971, 600, "startscreen1.png", 0, 0);
+
+
     myGameArea.start();
 }
 
@@ -38,50 +38,50 @@ var myGameArea = {
 }
 
 function drawMage(width, height, color, x, y ) {
-    
-   
+
+
     this.image = new Image();
     this.image.src = color;
-    
+
     this.width = width;
     this.height = height;
     this.speedX = 0;
-    this.speedY = 0;    
+    this.speedY = 0;
     this.x = x;
-    this.y = y;    
+    this.y = y;
     this.update = function() {
         ctx = myGameArea.context;
-        ctx.drawImage(this.image, 
-                this.x, 
+        ctx.drawImage(this.image,
+                this.x,
                 this.y,
                 this.width, this.height);
-        
+
     }
-    
+
 }
 function buttonMage(width, height, color, x, y ) {
-    
-   
+
+
     this.image = new Image();
     this.image.src = color;
-    
+
     this.width = width;
     this.height = height;
     this.speedX = 0;
-    this.speedY = 0;    
+    this.speedY = 0;
     this.x = x;
-    this.y = y;    
+    this.y = y;
     this.update = function() {
         ctx = myGameArea.context;
-        ctx.drawImage(this.image, 
-                this.x, 
+        ctx.drawImage(this.image,
+                this.x,
                 this.y,
                 this.width, this.height);
-                
-        
+
+
     }
-    
-    
+
+
 }
 
 function updateGameArea() {
