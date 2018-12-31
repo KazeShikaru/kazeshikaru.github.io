@@ -14,13 +14,13 @@ var images = [new Image(), new Image()];
 
 function arr(event){
   console.log(event);
-  if(event.clientX>300 && event.clientY>300){
+  if(event.clientX>300 && event.clientY>300 &&event.clientY<375 &&event.clientX<600){
     c.clearRect(0,0,981,600);
   }
 }
 
 function rose() {
-  if(event.clientX>300 && event.clientY>300){
+  if(event.clientX>300 && event.clientY>300 &&event.clientY<375 &&event.clientX<600){
   return;
   }
   console.log("Hello world!");
@@ -58,7 +58,7 @@ function soup() {
           c.drawImage(images[i], 0, 0);
           break;
         case 1:
-          c.drawImage(images[i], 300, 300);
+          c.drawImage(images[i], 0, 20);
           break;
       }
 
