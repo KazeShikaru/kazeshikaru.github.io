@@ -6,25 +6,26 @@ canvas.height = 600;
 canvas.addEventListener("click", rose);
 canvas.addEventListener("mousedown",function(event){ arr(event);});
 var c = canvas.getContext('2d');
-c.fillRect(0, 0, 400, 500);
-c.stroke();
+//c.fillRect(0, 0, 400, 500);
+//c.stroke();
 
 
 var images = [new Image(), new Image()];
-
+var rect = canvas.getBoundingClientRect();
 function arr(event){
   console.log(event);
-  if(event.clientX>300 && event.clientY>300 &&event.clientY<375 &&event.clientX<600){
-    c.clearRect(0,0,981,600);
+if(event.clientX-rect.left>336 && event.clientY-rect.top>263 &&event.clientY-rect.top<263+75 &&event.clientX-rect.left<336+300){
+    //c.clearRect(0,0,981,600);
+    images[0].src='monix gif.gif';
+    soup();
   }
 }
-
+var truesstart=0;
 function rose() {
-  if(event.clientX>300 && event.clientY>300 &&event.clientY<375 &&event.clientX<600){
-  return;
-  }
+  var iconlist = 0;
+if(truesstart<2){
   console.log("Hello world!");
-  for (var i = 0; i < images.length; i++) {
+  for (var i = iconlist; i < images.length+iconlist; i++) {
     var why = images[i];
     switch (i) {
       case 0:
@@ -33,9 +34,11 @@ function rose() {
       case 1:
         why.src = 'button.png';
         break;
+
     }
     why.onload = soup;
   }
+}truestart++;
 }
 
 /*
@@ -58,7 +61,7 @@ function soup() {
           c.drawImage(images[i], 0, 0);
           break;
         case 1:
-          c.drawImage(images[i], 0, 20);
+          c.drawImage(images[i], 336, 263);
           break;
       }
 
@@ -68,7 +71,7 @@ function soup() {
 
 function drawImageActualSize() {
 
-  c.drawImage(this, 0, 0);
+  //c.drawImage(this, 0, 0);
 
 
 }
