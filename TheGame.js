@@ -17,13 +17,13 @@ function arr(event){
 if(event.clientX-rect.left>336 && event.clientY-rect.top>263 &&event.clientY-rect.top<263+75 &&event.clientX-rect.left<336+300){
     //c.clearRect(0,0,981,600);
     images[0].src='monix gif.gif';
-    soup();
+    //soup();
   }
 }
 var truesstart=0;
 function rose() {
   var iconlist = 0;
-if(truesstart<2){
+if(truesstart<1){
   console.log("Hello world!");
   for (var i = iconlist; i < images.length+iconlist; i++) {
     var why = images[i];
@@ -38,7 +38,7 @@ if(truesstart<2){
     }
     why.onload = soup;
   }
-}truestart++;
+}truesstart++;
 }
 
 /*
