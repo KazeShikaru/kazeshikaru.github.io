@@ -5,19 +5,47 @@
 <link rel="stylesheet" type="text/css" href="UBE.css" media="all">
 </head>
 <body onload="startGame()" onresize="resize()">
+    
+    
+      
+    <audio autoplay>
+        <source src="music/Emotions.mp3" type="audio/mpeg">
+    </audio>
+    
     <p id="demo" style="color:white">Soup</p>
     <canvas id="myCanvas" width="971" height="600"></canvas>
     <!--<script src="main.js"></script>-->
     <script src="screenElement.js"></script>
     <script>
+    ///////////////////////////////
+    //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
+    function sound(src) {        
+    
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function(){
+            this.sound.play();
+        }
+        this.stop = function(){
+            this.sound.pause();
+        }    
+    }
+        
+        
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     var elem = ScrEle(200,200,500,100,"img/button.png","s1");
     var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png","b1");    
     var screen1 = [elem2,elem];
-    var elem3 = ScrEle(200,200,500,100,"img/Map1.png","s2");
+    var elem3 = ScrEle(100,100,40,20,"img/Map1.png","s2");
     var elem4 = ScrEle(000,000,981,600,"img/Map2.png","b2");
-    var screen2 = [elem4,elem3];
+    var elem5 = ScrEle(0,000,300,600,"img/RoseLeft.png","s2");
+    var elem6 = ScrEle(400,000,400,600,"img/RenaRight.png","b2");
+    var screen2 = [elem4,elem5,elem6,elem3];
     var currentScreen = screen1;
     var imoige = elem.image;
     //imoige.src = "img/Map1.png";
@@ -27,11 +55,13 @@
     
     
     var soup = document.getElementById("myCanvas");
+    var rect = soup.getBoundingClientRect();
+    var ctx = soup.getContext("2d");
     soup.addEventListener("mousedown",function(event){ 
         checkWhatClicked(event);
                                                      });
-    var rect = soup.getBoundingClientRect();
-    var ctx = soup.getContext("2d");
+    
+        
     function clearC(){
         ctx.clearRect(0, 0, soup.width, soup.height);
     }
@@ -42,31 +72,38 @@
         
         wall.locX-=30;
         //ctx.drawImage(imoige, 300, 100);
+        
         for(i = 0; i<currentScreen.length;i++){
             currentScreen[i].update(ctx);
         }
         
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World", 10, 50);
         wall.update(ctx);
-    },50);
+    },20);
    
     function checkWhatClicked(event){
         document.getElementById("demo").innerHTML = event.clientX;
-        
+        if(wall.locX<-987){
         for(i = 0; i<currentScreen.length;i++){
             if(currentScreen[i].checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
             document.getElementById("demo").innerHTML += "sp"+elem.locX+elem.checkClicked(1,1);
                 if(currentScreen[i].name=="s1"){
                 currentScreen=screen2;
+                    
                     transition()
+                    
                     return;
                 }else if(currentScreen[i].name=="s2"){
                 currentScreen=screen1;
+                    
                     transition()
+                    
                     return;
             }
         }
         }
-        
+        }
         
     }
         function transition(){
