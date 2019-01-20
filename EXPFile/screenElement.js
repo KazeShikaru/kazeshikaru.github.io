@@ -1,7 +1,8 @@
 
-function ScrEle(x, y, width, length, file) {
+function ScrEle(x, y, width, length, file,name) {
     
     var screenEl = {
+        name:name,
         image: new Image(),
         locX:x,
         locY:y,

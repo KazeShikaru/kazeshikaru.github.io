@@ -12,11 +12,15 @@
     <script>
     ////////////////////////////////////////////
     
-    var elem =ScrEle(200,200,500,100,"img/button.png");
-    var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png");
-    
+    var elem = ScrEle(200,200,500,100,"img/button.png","s1");
+    var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png","s1");    
+    var screen1 = [elem2,elem];
+    var elem3 = ScrEle(200,200,500,100,"img/Map1.png","s2");
+    var elem4 = ScrEle(000,000,981,600,"img/Map2.png","s2");
+    var screen2 = [elem4,elem3];
+    var currentScreen = screen1;
     var imoige = elem.image;
-    imoige.src = "img/Map1.png";
+    //imoige.src = "img/Map1.png";
     /////////////////////////////////////////////
     document.getElementById("demo").innerHTML = "sp"+elem.locX+elem.checkClicked(1,1);
     
@@ -36,16 +40,30 @@
     setInterval(function(){
         clearC();
         //ctx.drawImage(imoige, 300, 100);
-        elem2.update(ctx);
-        elem.update(ctx);
+        for(i = 0; i<currentScreen.length;i++){
+            currentScreen[i].update(ctx);
+        }
+        
+        
     },50);
    
     function checkWhatClicked(event){
         document.getElementById("demo").innerHTML = event.clientX;
         
-        if(elem.checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
+        for(i = 0; i<currentScreen.length;i++){
+            if(currentScreen[i].checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
             document.getElementById("demo").innerHTML += "sp"+elem.locX+elem.checkClicked(1,1);
+                if(currentScreen[i].name=="s1"){
+                currentScreen=screen2;
+                    return;
+                }else{
+                currentScreen=screen1;
+                    return;
+            }
         }
+        }
+        
+        
     }
         
     function resize(){
