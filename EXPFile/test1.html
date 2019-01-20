@@ -11,12 +11,12 @@
     <script src="screenElement.js"></script>
     <script>
     ////////////////////////////////////////////
-    
+    var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     var elem = ScrEle(200,200,500,100,"img/button.png","s1");
-    var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png","s1");    
+    var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png","b1");    
     var screen1 = [elem2,elem];
     var elem3 = ScrEle(200,200,500,100,"img/Map1.png","s2");
-    var elem4 = ScrEle(000,000,981,600,"img/Map2.png","s2");
+    var elem4 = ScrEle(000,000,981,600,"img/Map2.png","b2");
     var screen2 = [elem4,elem3];
     var currentScreen = screen1;
     var imoige = elem.image;
@@ -39,12 +39,14 @@
         
     setInterval(function(){
         clearC();
+        
+        wall.locX-=30;
         //ctx.drawImage(imoige, 300, 100);
         for(i = 0; i<currentScreen.length;i++){
             currentScreen[i].update(ctx);
         }
         
-        
+        wall.update(ctx);
     },50);
    
     function checkWhatClicked(event){
@@ -55,9 +57,11 @@
             document.getElementById("demo").innerHTML += "sp"+elem.locX+elem.checkClicked(1,1);
                 if(currentScreen[i].name=="s1"){
                 currentScreen=screen2;
+                    transition()
                     return;
-                }else{
+                }else if(currentScreen[i].name=="s2"){
                 currentScreen=screen1;
+                    transition()
                     return;
             }
         }
@@ -65,6 +69,9 @@
         
         
     }
+        function transition(){
+            wall.locX=0;
+        }
         
     function resize(){
         rect = document.getElementById("myCanvas").getBoundingClientRect();
