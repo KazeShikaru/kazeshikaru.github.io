@@ -8,7 +8,18 @@ canvas.addEventListener("mousedown",function(event){ arr(event);});
 var c = canvas.getContext('2d');
 //c.fillRect(0, 0, 400, 500);
 //c.stroke();
+var globalInventCounter{
+  money : 0,
+  //HP,MaxHP,MP;MaxMP,Attak,Def;SPD,lvlHp,lvlMp,lvlAttack,lvlDefence,lvlSpeed
+  eric : makeChara(300,300,100,100,20,5,100,20,10,4,1,10),
+  mina : {100,30,40,50},
+  lulu : {100,30,40,50},
+  inventory : getInvent(),
+  skillChart: getSkillChart(),
 
+
+
+};
 
 var images = [new Image(), new Image()];
 var rect = canvas.getBoundingClientRect();
@@ -16,7 +27,7 @@ function arr(event){
   console.log(event);
 if(event.clientX-rect.left>336 && event.clientY-rect.top>263 &&event.clientY-rect.top<263+75 &&event.clientX-rect.left<336+300){
     //c.clearRect(0,0,981,600);
-    images[0].src='monix gif.gif';
+    images[0].src='img/monix gif.gif';
     //soup();
   }
 }
@@ -29,10 +40,10 @@ if(truesstart<1){
     var why = images[i];
     switch (i) {
       case 0:
-        why.src = 'startscreen1.png';
+        why.src = 'img/startscreen1.png';
         break;
       case 1:
-        why.src = 'button.png';
+        why.src = 'img/button.png';
         break;
 
     }

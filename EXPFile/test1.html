@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="UBE.css" media="all">
+</head>
+<body onload="startGame()" onresize="resize()">
+    <p id="demo" style="color:white">Soup</p>
+    <canvas id="myCanvas" width="971" height="600"></canvas>
+    <!--<script src="main.js"></script>-->
+    <script src="screenElement.js"></script>
+    <script>
+    ////////////////////////////////////////////
+    
+    var elem =ScrEle(200,200,500,100,"img/button.png");
+    var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png");
+    
+    var imoige = elem.image;
+    imoige.src = "img/Map1.png";
+    /////////////////////////////////////////////
+    document.getElementById("demo").innerHTML = "sp"+elem.locX+elem.checkClicked(1,1);
+    
+    
+    
+    var soup = document.getElementById("myCanvas");
+    soup.addEventListener("mousedown",function(event){ 
+        checkWhatClicked(event);
+                                                     });
+    var rect = soup.getBoundingClientRect();
+    var ctx = soup.getContext("2d");
+    function clearC(){
+        ctx.clearRect(0, 0, soup.width, soup.height);
+    }
+    
+        
+    setInterval(function(){
+        clearC();
+        //ctx.drawImage(imoige, 300, 100);
+        elem2.update(ctx);
+        elem.update(ctx);
+    },50);
+   
+    function checkWhatClicked(event){
+        document.getElementById("demo").innerHTML = event.clientX;
+        
+        if(elem.checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
+            document.getElementById("demo").innerHTML += "sp"+elem.locX+elem.checkClicked(1,1);
+        }
+    }
+        
+    function resize(){
+        rect = document.getElementById("myCanvas").getBoundingClientRect();
+
+    }
+        
+    </script>>
+
+
+</body>
+</html>
