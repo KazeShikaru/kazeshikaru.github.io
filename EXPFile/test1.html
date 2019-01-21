@@ -30,6 +30,12 @@
     var textLeft = 5;
     var theMainText = ScriptText(9);
     
+    var canDrag = false;
+    var mouseDown = false;
+    var downMX =0;
+    var downMY = 0;
+    var downBX = 0;
+    var downBY =0;
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     
@@ -44,11 +50,42 @@
     var soup = document.getElementById("myCanvas");
     var rect = soup.getBoundingClientRect();
     var ctx = soup.getContext("2d");
-    soup.addEventListener("mousedown",function(event){ 
+    soup.addEventListener("mousedown",function(event){
+        
+        mouseDown=true;
+        downMX=event.clientX-rect.left;
+        downMY=event.clientY-rect.top;
+        downBX=elem7_6.locX;
+        downBY=elem7_6.locY;
         if(loading>1){
             checkWhatClicked(event);
         }
-                                                     });
+        
+        
+    });
+    soup.addEventListener("mousemove",function(event){ 
+        if(mouseDown){
+            elem7_6.locX=((event.clientX-rect.left)-downMX);
+            elem7_6.locY=((event.clientY-rect.top)-downMY);
+        }
+        
+    });
+    soup.addEventListener("mouseup",function(event){
+        downMX=event.clientX-rect.left;
+        downMY=event.clientY-rect.top;
+        downBX=elem7_6.locX;
+        downBY=elem7_6.locY;
+        mouseDown=false;
+        
+    });
+    soup.addEventListener("mouseout",function(event){ 
+        downMX=event.clientX-rect.left;
+        downMY=event.clientY-rect.top;
+        downBX=elem7_6.locX;
+        downBY=elem7_6.locY;
+       mouseDown=false;
+        
+    });
     
         
     function clearC(){
@@ -65,7 +102,7 @@
         for(i = 0; i<currentScreen.length;i++){
             currentScreen[i].update(ctx);
         }
-        
+        document.getElementById("demo").innerHTML = "sp"+elem1_1.locX+elem1_1.checkClicked(1,1)+mouseDown;
         
         
         wall.update(ctx);
@@ -76,7 +113,7 @@
         if(wall.locX<-987){
         for(i = 0; i<currentScreen.length;i++){
             if(currentScreen[i].checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
-            document.getElementById("demo").innerHTML += "sp"+elem1_1.locX+elem1_1.checkClicked(1,1);
+            
                 if(currentScreen[i].name.substring(0,2)=="s1"){
                
                     switchScreen(1);
@@ -161,7 +198,7 @@
     function loaded(){
         if(loading>1){
             text1_1.text="Loaded";
-            text2_1.text="Loap";
+            
         }
             loading+=1;
         

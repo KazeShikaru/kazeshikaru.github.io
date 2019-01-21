@@ -59,10 +59,10 @@ function ScriptText(re) {
             [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
             [0,0,[0,1,0,0],"Rena","Thats sad"],
             [0,0,[0,1,0,0],"Rena","Very Sad"],
-            [5,0,[0,1,0,0],"Rena","I like Soup and Cream"],
-            [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
-            [0,0,[0,1,0,0],"Rena","Thats sad"],
-            [0,0,[0,1,0,0],"Rena","Very Sad"],
+            [5,0,[0,1,0,0],"Rena","Let's go through this tutorial!"],
+            [0,0,[0,1,0,0],"Rose","Sure"],
+            [0,0,[0,1,0,0],"Rena","First lets try melee attack"],
+            [0,0,[0,1,0,0],"Rena","Explain"],
             [-1,0,[0,1,0,0],"",""],
         
         ],
@@ -93,3 +93,4 @@ function getChara(CharacterZ){
     
     
 }
+

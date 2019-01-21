@@ -10,7 +10,7 @@ var screen1 = [elem1_2,elem1_1,text1_1];
 
 //Story screen (character 1- 4 , textbox. text, background image)
 var text2_1 = ScrTxt(170, 430, "load",  "30px Arial", "red","txt2");
-var text2_2 = ScrTxt(170, 460, "load",  "30px Arial", "red","txt2");
+var text2_2 = ScrTxt(170, 460, "load",  "20px Arial", "red","txt2");
 var elem2_1 = ScrEle(100,100,40,20,"img/Map1.png","s2");
 var elem2_2 = ScrEle(000,000,981,600,"img/Map2.png","b2");
 var elem2_3 = ScrEle(0,000,300,600,"img/RoseLeft.png","c1");
@@ -51,4 +51,9 @@ var screen6 = [elem6_1,elem6_2];
 //GamePlay
 var elem7_1 = ScrEle(0,0,981,600,"img/black.jpg","b4");
 var elem7_2 = ScrEle(620,500,120,50,"img/pink.png","s3a");
-var screen7 = [elem7_1,elem7_2];
+var elem7_3 = ScrEle(600,200,250,400,"img/RoseRight.png","c1");
+var elem7_4 = ScrEle(700,200,300,400,"img/RenaRight.png","c2");
+var elem7_5 = ScrEle(100,400,600,150,"img/ButtonBlue3.jpg","s3");
+var elem7_6 = ScrEle(0,0,981,600,"img/wallpaper1.png","s3");
+var text7_1 = ScrTxt(170, 460, "Press your unit by left clicking your mouse",  "20px Arial", "red","txt7_1");
+var screen7 = [elem7_1,elem7_6 ,elem7_2,elem7_4,elem7_3 ,elem7_5,text7_1];
