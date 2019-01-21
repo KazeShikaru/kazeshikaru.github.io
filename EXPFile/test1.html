@@ -26,7 +26,8 @@
     
     var EFsound=0;   
     var loading = 0;
-    var text1 = "Hello World";
+    
+    
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     
@@ -61,8 +62,8 @@
             currentScreen[i].update(ctx);
         }
         
-        ctx.font = "30px Arial";
-        ctx.fillText(text1, 10, 50);
+        
+        
         wall.update(ctx);
     },20);
    
@@ -100,7 +101,8 @@
     }
     function loaded(){
         if(loading==1){
-            text1 = "loaded!";
+           
+            text2.text="Loap";
         }else{
             loading+=1;
         }

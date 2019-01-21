@@ -32,8 +32,22 @@ function ScrEle(x, y, width, length, file,name) {
     
 };
 
-function ScrTxt(x, y, width, length, font, Lsize ,name) {
+function ScrTxt(x, y, text,  font, color,name) {
     var screenTxt = {
+        locX:x,
+        locY:y,
+        text:text,
+        name:name,
+        font:font,
         
+        update:function(ctx){
+            
+            ctx.font=this.font;
+            ctx.fillStyle ="white";
+            ctx.fillText(this.text,this.locX,this.locY);
+            ctx.fillStyle ="black";
+        }
     };
+    
+    return screenTxt;
 };
