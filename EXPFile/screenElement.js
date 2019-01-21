@@ -55,14 +55,14 @@ function ScrTxt(x, y, text,  font, color,name) {
 function ScriptText(re) {
     var screenTxt = { 
         lines:[
-            [0,0,[0,1],"Rena","I like Soup and Cream"],
-            [0,0,[0,1],"Rose","I Dont like Soup and Cream"],
-            [0,0,[0,1],"Rena","Thats sad"],
-            [0,0,[0,1],"Rena","Very Sad"],
-            [0,0,[0,1],"Rena","I like Soup and Cream"],
-            [0,0,[0,1],"Rose","I Dont like Soup and Cream"],
-            [0,0,[0,1],"Rena","Thats sad"],
-            [0,0,[0,1],"Rena","Very Sad"],
+            [0,0,[0,1,0,0],"Rena","I like Soup and Cream"],
+            [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
+            [0,0,[0,1,0,0],"Rena","Thats sad"],
+            [0,0,[0,1,0,0],"Rena","Very Sad"],
+            [4,0,[0,1,0,0],"Rena","I like Soup and Cream"],
+            [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
+            [0,0,[0,1,0,0],"Rena","Thats sad"],
+            [0,0,[0,1,0,0],"Rena","Very Sad"],
         
         ],
         currentLine:0,
@@ -82,5 +82,13 @@ function ScriptText(re) {
     };
     
     return screenTxt;
+    
+}
+
+function getChara(CharacterZ){
+    
+    
+    
+    
     
 }

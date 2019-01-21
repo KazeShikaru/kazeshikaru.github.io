@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="UBE.css" media="all">
 </head>
-<body onload="startGame()" onresize="resize()">
+<body onresize="resize()">
     
     
       
@@ -27,7 +27,7 @@
     
     var EFsound = 0;   
     var loading = 0;
-    var textLeft = 4;
+    var textLeft = 5;
     var theMainText = ScriptText(9);
     
     ////////////////////////////////////////////
@@ -98,6 +98,8 @@
                         var txtOne = theMainText.nextText();
                         if(txtOne[0]>0){
                             textLeft+=txtOne[0];
+                            switchScreen(2);
+                            
                         }else if(txtOne[0]==-1){
                             
                         }
@@ -127,6 +129,12 @@
                 }else if(currentScreen[i].name=="s6"){
                 
                     switchScreen(5);
+                    
+                    
+                    return;
+                }else if(currentScreen[i].name=="s7"){
+                
+                    switchScreen(1);
                     
                     
                     return;
