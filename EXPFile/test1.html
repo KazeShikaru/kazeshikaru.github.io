@@ -8,10 +8,10 @@
     
     
       
-    <audio autoplay id = "sound1" oncanplay="loaded()">
+    <audio autoplay id = "sound1" oncanplay="">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
-    <audio autoplay id = "sound2" oncanplay="loaded()">
+    <audio autoplay id = "sound2" oncanplay="">
         <source id = "soundSource2" src="music/Heal1.ogg" type="audio/mpeg">
     </audio>
     
@@ -22,6 +22,7 @@
     <script src="variables.js"></script>
     <script src="scripts.js"></script>
     <script>
+    window.onload = function () { loaded();loaded();text1_1.text="Loaded";};
     ///////////////////////////////
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
     
@@ -64,7 +65,7 @@
         
     });
     soup.addEventListener("mousemove",function(event){ 
-        if(mouseDown){
+        if(mouseDown && currentScreen==screen7){
             elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));
             
             elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
