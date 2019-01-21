@@ -91,16 +91,22 @@
                     return;
                 }else if(currentScreen[i].name=="s3"){
                     if(textLeft==0){
-                        switchScreen(2);
                         transition()
+                        switchScreen(2);
+                        
                     }else{
                        
                         var txtOne = theMainText.nextText();
                         if(txtOne[0]>0){
                             textLeft+=txtOne[0];
+                            transition();
                             switchScreen(2);
                             
+                            
                         }else if(txtOne[0]==-1){
+                            transition();
+                            switchScreen(6);
+                        }else if(txtOne[0]==-2){
                             
                         }
                         text2_1.text=txtOne[3];
@@ -133,7 +139,7 @@
                     
                     return;
                 }else if(currentScreen[i].name=="s7"){
-                
+                    transition();
                     switchScreen(1);
                     
                     
@@ -186,6 +192,10 @@
                 break;
             case 5:currentScreen=screen6;
                 music.src="music/Heal6.ogg";
+                switchMusic(2);
+                break;
+            case 6:currentScreen=screen7;
+                music.src="music/Heal7.ogg";
                 switchMusic(2);
                 break;
         }

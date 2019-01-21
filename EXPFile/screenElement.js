@@ -59,10 +59,11 @@ function ScriptText(re) {
             [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
             [0,0,[0,1,0,0],"Rena","Thats sad"],
             [0,0,[0,1,0,0],"Rena","Very Sad"],
-            [4,0,[0,1,0,0],"Rena","I like Soup and Cream"],
+            [5,0,[0,1,0,0],"Rena","I like Soup and Cream"],
             [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
             [0,0,[0,1,0,0],"Rena","Thats sad"],
             [0,0,[0,1,0,0],"Rena","Very Sad"],
+            [-1,0,[0,1,0,0],"",""],
         
         ],
         currentLine:0,

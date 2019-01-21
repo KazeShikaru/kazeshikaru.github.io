@@ -49,3 +49,6 @@ var elem6_2 = ScrEle(620,500,120,50,"img/pink.png","s3a");
 var screen6 = [elem6_1,elem6_2];
 
 //GamePlay
+var elem7_1 = ScrEle(0,0,981,600,"img/black.jpg","b4");
+var elem7_2 = ScrEle(620,500,120,50,"img/pink.png","s3a");
+var screen7 = [elem7_1,elem7_2];
