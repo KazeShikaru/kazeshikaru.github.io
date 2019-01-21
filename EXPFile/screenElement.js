@@ -56,6 +56,13 @@ function ScriptText(re) {
     var screenTxt = { 
         lines:[
             [0,0,[0,1],"Rena","I like Soup and Cream"],
+            [0,0,[0,1],"Rose","I Dont like Soup and Cream"],
+            [0,0,[0,1],"Rena","Thats sad"],
+            [0,0,[0,1],"Rena","Very Sad"],
+            [0,0,[0,1],"Rena","I like Soup and Cream"],
+            [0,0,[0,1],"Rose","I Dont like Soup and Cream"],
+            [0,0,[0,1],"Rena","Thats sad"],
+            [0,0,[0,1],"Rena","Very Sad"],
         
         ],
         currentLine:0,
