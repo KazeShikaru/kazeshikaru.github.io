@@ -20,13 +20,15 @@
     <!--<script src="main.js"></script>-->
     <script src="screenElement.js"></script>
     <script src="variables.js"></script>
+    <script src="scripts.js"></script>
     <script>
     ///////////////////////////////
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
     
-    var EFsound=0;   
+    var EFsound = 0;   
     var loading = 0;
-    
+    var textLeft = 1;
+    var theMainText = ScriptText(9);
     
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
@@ -44,7 +46,8 @@
     var ctx = soup.getContext("2d");
     soup.addEventListener("mousedown",function(event){ 
         if(loading>1){
-        checkWhatClicked(event);}
+            checkWhatClicked(event);
+        }
                                                      });
     
         
@@ -87,9 +90,21 @@
                     
                     return;
                 }else if(currentScreen[i].name=="s3"){
-                
-                    switchScreen(2);
-                    transition()
+                    if(textLeft==0){
+                        switchScreen(2);
+                        transition()
+                    }else{
+                       
+                        var txtOne = theMainText.nextText();
+                        if(txtOne[0]>0){
+                            textLeft+=txtOne[0];
+                        }else if(txtOne[0]==-1){
+                            
+                        }
+                        text2_1.text=txtOne[3];
+                        text2_2.text=txtOne[4];
+                        textLeft--;
+                    }
                     
                     return;
                 }else if(currentScreen[i].name=="s3a"){
@@ -131,7 +146,7 @@
     }
     function loaded(){
         if(loading==1){
-           text1_1.text="Loaded";
+            text1_1.text="Loaded";
             text2_1.text="Loap";
         }
             loading+=1;

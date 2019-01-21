@@ -10,12 +10,13 @@ var screen1 = [elem1_2,elem1_1,text1_1];
 
 //Story screen (character 1- 4 , textbox. text, background image)
 var text2_1 = ScrTxt(170, 430, "load",  "30px Arial", "red","txt2");
+var text2_2 = ScrTxt(170, 460, "load",  "30px Arial", "red","txt2");
 var elem2_1 = ScrEle(100,100,40,20,"img/Map1.png","s2");
 var elem2_2 = ScrEle(000,000,981,600,"img/Map2.png","b2");
 var elem2_3 = ScrEle(0,000,300,600,"img/RoseLeft.png","c1");
 var elem2_4 = ScrEle(400,000,400,600,"img/RenaRight.png","c2");
 var elem2_5 = ScrEle(100,400,600,150,"img/ButtonBlue3.jpg","s3");
-var screen2 = [elem2_2,elem2_3,elem2_4,elem2_1,elem2_5,text2_1];
+var screen2 = [elem2_2,elem2_3,elem2_4,elem2_1,elem2_5,text2_1,text2_2];
 
 //Camp(save, shop,next mission, storybook)
 var elem3_1 = ScrEle(0,0,981,600,"img/CC1.jpg","d1");
@@ -43,6 +44,8 @@ var screen5 = [elem5_1,elem5_2];
 
 //SkillScreen(lulu, Eric, Mina, background, skill*9)
 
-var elem17 = ScrEle(50,50,881,500,"img/CC4.png","b4");
-var elem18 = ScrEle(620,500,120,50,"img/pink.png","s3a");
-var screen6 = [elem17,elem18];
+var elem6_1 = ScrEle(50,50,881,500,"img/green.png","b4");
+var elem6_2 = ScrEle(620,500,120,50,"img/pink.png","s3a");
+var screen6 = [elem6_1,elem6_2];
+
+//GamePlay

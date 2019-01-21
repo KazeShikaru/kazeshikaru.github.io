@@ -51,3 +51,29 @@ function ScrTxt(x, y, text,  font, color,name) {
     
     return screenTxt;
 };
+
+function ScriptText(re) {
+    var screenTxt = { 
+        lines:[
+            [0,0,[0,1],"Rena","I like Soup and Cream"],
+        
+        ],
+        currentLine:0,
+        charaImages:[
+            "img/RoseLeft.png",
+            "img/RenaRight.png",
+        ],
+        backgrounds:[
+            
+        ],
+        nextText:function(){
+            var nextLine = this.lines[this.currentLine];
+            this.currentLine++;
+            return nextLine;
+        },
+        
+    };
+    
+    return screenTxt;
+    
+}
