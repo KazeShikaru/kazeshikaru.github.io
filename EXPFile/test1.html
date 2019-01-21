@@ -8,10 +8,10 @@
     
     
       
-    <audio autoplay id = "sound1">
+    <audio autoplay id = "sound1" oncanplay="loaded()">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
-    <audio autoplay id = "sound2">
+    <audio autoplay id = "sound2" oncanplay="loaded()">
         <source id = "soundSource2" src="music/Heal1.ogg" type="audio/mpeg">
     </audio>
     
@@ -24,8 +24,9 @@
     ///////////////////////////////
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
     
-        
-        
+    var EFsound=0;   
+    var loading = 0;
+    var text1 = "Hello World";
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     
@@ -61,7 +62,7 @@
         }
         
         ctx.font = "30px Arial";
-        ctx.fillText("Hello World", 10, 50);
+        ctx.fillText(text1, 10, 50);
         wall.update(ctx);
     },20);
    
@@ -97,6 +98,13 @@
         rect = document.getElementById("myCanvas").getBoundingClientRect();
 
     }
+    function loaded(){
+        if(loading==1){
+            text1 = "loaded!";
+        }else{
+            loading+=1;
+        }
+    }
     
     function switchScreen(nextScreen){
         var music = document.getElementById("sound2");
@@ -111,7 +119,17 @@
                 break;
         }
     }
-        
+    function playSoundEffect(number){
+        if(EFsound==0){
+            switch(numer){
+                    
+                    
+                    
+                    
+            }
+            
+        }
+    }
     function switchMusic(number){
         var music = document.getElementById("sound1");
         
