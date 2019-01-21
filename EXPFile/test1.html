@@ -43,7 +43,8 @@
     var rect = soup.getBoundingClientRect();
     var ctx = soup.getContext("2d");
     soup.addEventListener("mousedown",function(event){ 
-        checkWhatClicked(event);
+        if(loading>1){
+        checkWhatClicked(event);}
                                                      });
     
         
@@ -108,11 +109,11 @@
     }
     function loaded(){
         if(loading==1){
-           
+           text1.text="Loaded";
             text2.text="Loap";
-        }else{
-            loading+=1;
         }
+            loading+=1;
+        
     }
     
     function switchScreen(nextScreen){
