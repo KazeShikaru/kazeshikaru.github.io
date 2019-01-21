@@ -32,10 +32,10 @@
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     
     var currentScreen = screen1;
-    var imoige = elem.image;
+    var imoige = elem1_1.image;
     //imoige.src = "img/Map1.png";
     /////////////////////////////////////////////
-    document.getElementById("demo").innerHTML = "sp"+elem.locX+elem.checkClicked(1,1);
+    document.getElementById("demo").innerHTML = "sp"+elem1_1.locX+elem1_1.checkClicked(1,1);
     
     
     
@@ -49,7 +49,7 @@
     
         
     function clearC(){
-        ctx.clearRect(0, 0, soup.width, soup.height);
+        ctx.clearRect(0, 0, currentScreen[0].width, currentScreen[0].height);
     }
     
         
@@ -73,7 +73,7 @@
         if(wall.locX<-987){
         for(i = 0; i<currentScreen.length;i++){
             if(currentScreen[i].checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
-            document.getElementById("demo").innerHTML += "sp"+elem.locX+elem.checkClicked(1,1);
+            document.getElementById("demo").innerHTML += "sp"+elem1_1.locX+elem1_1.checkClicked(1,1);
                 if(currentScreen[i].name.substring(0,2)=="s1"){
                
                     switchScreen(1);
@@ -86,11 +86,33 @@
                     transition()
                     
                     return;
-                }
-                else if(currentScreen[i].name=="s3"){
+                }else if(currentScreen[i].name=="s3"){
                 
                     switchScreen(2);
                     transition()
+                    
+                    return;
+                }else if(currentScreen[i].name=="s3a"){
+                
+                    switchScreen(2);
+                   
+                    
+                    return;
+                }else if(currentScreen[i].name=="s4"){
+                
+                    switchScreen(3);
+                    
+                    return;
+                }else if(currentScreen[i].name=="s5"){
+                
+                    switchScreen(4);
+                    
+                    
+                    return;
+                }else if(currentScreen[i].name=="s6"){
+                
+                    switchScreen(5);
+                    
                     
                     return;
                 }
@@ -109,8 +131,8 @@
     }
     function loaded(){
         if(loading==1){
-           text1.text="Loaded";
-            text2.text="Loap";
+           text1_1.text="Loaded";
+            text2_1.text="Loap";
         }
             loading+=1;
         
@@ -129,6 +151,18 @@
                 break;
             case 2:currentScreen=screen3;
                 music.src="music/Heal3.ogg";
+                switchMusic(2);
+                break;
+            case 3:currentScreen=screen4;
+                music.src="music/Heal4.ogg";
+                switchMusic(2);
+                break;
+            case 4:currentScreen=screen5;
+                music.src="music/Heal5.ogg";
+                switchMusic(2);
+                break;
+            case 5:currentScreen=screen6;
+                music.src="music/Heal6.ogg";
                 switchMusic(2);
                 break;
         }
