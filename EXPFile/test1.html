@@ -65,24 +65,19 @@
     });
     soup.addEventListener("mousemove",function(event){ 
         if(mouseDown){
-            elem7_6.locX=((event.clientX-rect.left)-downMX);
-            elem7_6.locY=((event.clientY-rect.top)-downMY);
+            elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));
+            
+            elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
         }
         
     });
     soup.addEventListener("mouseup",function(event){
-        downMX=event.clientX-rect.left;
-        downMY=event.clientY-rect.top;
-        downBX=elem7_6.locX;
-        downBY=elem7_6.locY;
+        
         mouseDown=false;
         
     });
     soup.addEventListener("mouseout",function(event){ 
-        downMX=event.clientX-rect.left;
-        downMY=event.clientY-rect.top;
-        downBX=elem7_6.locX;
-        downBY=elem7_6.locY;
+        
        mouseDown=false;
         
     });
