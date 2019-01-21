@@ -31,3 +31,9 @@ function ScrEle(x, y, width, length, file,name) {
     return screenEl;
     
 };
+
+function ScrTxt(x, y, width, length, font, Lsize ,name) {
+    var screenTxt = {
+        
+    };
+};

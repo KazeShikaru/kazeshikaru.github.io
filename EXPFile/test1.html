@@ -8,44 +8,27 @@
     
     
       
-    <audio autoplay>
-        <source src="music/Emotions.mp3" type="audio/mpeg">
+    <audio autoplay id = "sound1">
+        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+    </audio>
+    <audio autoplay id = "sound2">
+        <source id = "soundSource2" src="music/Heal1.ogg" type="audio/mpeg">
     </audio>
     
     <p id="demo" style="color:white">Soup</p>
     <canvas id="myCanvas" width="971" height="600"></canvas>
     <!--<script src="main.js"></script>-->
     <script src="screenElement.js"></script>
+    <script src="variables.js"></script>
     <script>
     ///////////////////////////////
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
-    function sound(src) {        
     
-        this.sound = document.createElement("audio");
-        this.sound.src = src;
-        this.sound.setAttribute("preload", "auto");
-        this.sound.setAttribute("controls", "none");
-        this.sound.style.display = "none";
-        document.body.appendChild(this.sound);
-        this.play = function(){
-            this.sound.play();
-        }
-        this.stop = function(){
-            this.sound.pause();
-        }    
-    }
         
         
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
-    var elem = ScrEle(200,200,500,100,"img/button.png","s1");
-    var elem2 = ScrEle(000,000,981,600,"img/startscreen1.png","b1");    
-    var screen1 = [elem2,elem];
-    var elem3 = ScrEle(100,100,40,20,"img/Map1.png","s2");
-    var elem4 = ScrEle(000,000,981,600,"img/Map2.png","b2");
-    var elem5 = ScrEle(0,000,300,600,"img/RoseLeft.png","s2");
-    var elem6 = ScrEle(400,000,400,600,"img/RenaRight.png","b2");
-    var screen2 = [elem4,elem5,elem6,elem3];
+    
     var currentScreen = screen1;
     var imoige = elem.image;
     //imoige.src = "img/Map1.png";
@@ -89,14 +72,14 @@
             if(currentScreen[i].checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
             document.getElementById("demo").innerHTML += "sp"+elem.locX+elem.checkClicked(1,1);
                 if(currentScreen[i].name=="s1"){
-                currentScreen=screen2;
-                    
+               
+                    switchScreen(1);
                     transition()
                     
                     return;
                 }else if(currentScreen[i].name=="s2"){
-                currentScreen=screen1;
-                    
+                
+                    switchScreen(0);
                     transition()
                     
                     return;
@@ -113,6 +96,38 @@
     function resize(){
         rect = document.getElementById("myCanvas").getBoundingClientRect();
 
+    }
+    
+    function switchScreen(nextScreen){
+        var music = document.getElementById("sound2");
+        switch(nextScreen){
+            case 0:currentScreen=screen1;
+                music.src="music/Heal1.ogg";
+                switchMusic(0);
+                break;
+            case 1:currentScreen=screen2;
+                music.src="music/Heal2.ogg";
+                switchMusic(1);
+                break;
+        }
+    }
+        
+    function switchMusic(number){
+        var music = document.getElementById("sound1");
+        
+        
+        var musicSource = document.getElementById("soundSource1");
+        switch(number){
+            case 0:music.src="music/Emotions.mp3";
+                
+                break;
+            case 1:music.src="music/01.mp3";
+                
+                break;
+               
+        }
+        
+        
     }
         
     </script>>
