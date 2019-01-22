@@ -57,8 +57,8 @@
         mouseDown=true;
         downMX=event.clientX-rect.left;
         downMY=event.clientY-rect.top;
-        //downBX=elem7_6.locX;
-        //downBY=elem7_6.locY;
+        downBX=elem7_6.locX;
+        downBY=elem7_6.locY;
         if(loading>1){
             checkWhatClicked(event);
         }
@@ -67,9 +67,9 @@
     });
     soup.addEventListener("mousemove",function(event){ 
         if(mouseDown && currentScreen==screen7){
-            //elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));
+            elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));
             
-            //elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
+            elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
         }
         
     });

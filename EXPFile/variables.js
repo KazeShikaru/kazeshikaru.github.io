@@ -56,4 +56,5 @@ var elem7_4 = ScrEle(700,200,300,400,"img/RenaRight.png","c2");
 var elem7_5 = ScrEle(100,400,600,150,"img/ButtonBlue3.jpg","s3");
 var elem7_6 = ScrEle(0,0,981,600,"img/kitty.png","e1");
 var text7_1 = ScrTxt(170, 460, "Press your unit by left clicking your mouse",  "20px Arial", "red","txt7_1");
+var text7_2 = ScrTxt(170, 490, "You can drag the background",  "20px Arial", "red","txt7_2");
 var screen7 = [elem7_1,elem7_6 ,elem7_2,elem7_4,elem7_3 ,elem7_5,text7_1];
