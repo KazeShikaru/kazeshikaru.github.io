@@ -25,7 +25,8 @@
     window.onload = function () { loaded();loaded();text1_1.text="Loaded";};
     ///////////////////////////////
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
-    
+    var tutorial=0;
+        
     var EFsound = 0;   
     var loading = 0;
     var textLeft = 5;
@@ -54,10 +55,10 @@
     soup.addEventListener("mousedown",function(event){
         
         mouseDown=true;
-        downMX=event.clientX-rect.left;
-        downMY=event.clientY-rect.top;
-        downBX=elem7_6.locX;
-        downBY=elem7_6.locY;
+                    downMX=event.clientX-rect.left;
+                    downMY=event.clientY-rect.top;
+                    downBX=elem7_6.locX;
+                    downBY=elem7_6.locY;
         if(loading>1){
             checkWhatClicked(event);
         }
@@ -174,6 +175,11 @@
                 }else if(currentScreen[i].name=="s7"){
                     transition();
                     switchScreen(1);
+                    
+                    
+                    return;
+                }
+                else if(currentScreen[i].name=="e1"){
                     
                     
                     return;
