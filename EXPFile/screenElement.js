@@ -112,16 +112,16 @@ function ScrTxt(x, y, text,  font, color,name) {
 function ScriptText(re) {
     var screenTxt = { 
         lines:[
-            [0,0,[0,1,0,0],"Rena","I like Soup and Cream"],
-            [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream"],
-            [0,0,[0,1,0,0],"Rena","Thats sad"],
-            [0,0,[0,1,0,0],"Rena","Very Sad"],
-            [6,0,[0,1,0,0],"Rena","Let's go through this tutorial!"],
-            [0,1,[0,1,0,0],"Rose","Sure"],
-            [0,-1,[0,1,0,0],"Sp","Nof"],
-            [0,1,[0,1,0,0],"Rena","First lets try melee attack"],
-            [0,1,[0,1,0,0],"Rena","Explain"],
-            [-1,1,[0,1,0,0],"",""],
+            [0,0,[0,1,0,0],"Rena","I like Soup and Cream",""],
+            [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream",""],
+            [0,0,[0,1,0,0],"Rena","Thats sad",""],
+            [0,0,[0,1,0,0],"Rena","Very Sad",""],
+            [6,0,[0,1,0,0],"Rena","Let's go through this tutorial!",""],
+            [0,1,[0,1,0,0],"Rose","Sure",""],
+            [0,-1,[0,1,0,0],"Sp","Nof",""],
+            [0,0,[0,1,0,0],"Rena","First lets try melee attack",""],
+            [0,1,[0,1,0,0],"Rena","Explain",""],
+            [-1,1,[0,1,0,0],"","",""],
         
         ],
         currentLine:0,

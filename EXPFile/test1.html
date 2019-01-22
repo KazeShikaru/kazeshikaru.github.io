@@ -8,16 +8,16 @@
     
     
       
-    <audio autoplay id = "sound1" oncanplay="">
+    <audio autoplay id = "sound1" oncanplay = "">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
-    <audio  id = "sound3" oncanplay="">
+    <audio  id = "sound3" oncanplay = "">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
-    <audio  id = "sound4" oncanplay="">
+    <audio  id = "sound4" oncanplay = "">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
-    <audio  id = "sound5" oncanplay="">
+    <audio  id = "sound5" oncanplay = "">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
     <audio autoplay id = "sound2" oncanplay="">
@@ -32,7 +32,7 @@
     <script src="scripts.js"></script>
     <script>
     window.onload = function () { loaded();loaded();text1_1.text="Loaded";};
-    ///////////////////////////////
+    ///////////////////////////////////////////////////////////éééééé
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
     var tutorial=0;
         
@@ -40,20 +40,20 @@
     var loading = 0;
     var textLeft = 5;
     var theMainText = ScriptText(9);
-    var transit =true;
+    var transit =false;
     
     var canDrag = false;
     var mouseDown = false;
-    var downMX =0;
+    var downMX = 0;
     var downMY = 0;
     var downBX = 0;
-    var downBY =0;
+    var downBY = 0;
     
     var cmdOpen=false;
     var cmdLock=true;
     
     ////////////////////////////////////////////
-    var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
+    var wall = ScrEle(-981,0,981,600,"img/street.jpg","s1");
     
     var currentScreen = screen1;
     var imoige = elem1_1.image;
@@ -103,17 +103,28 @@
         ctx.clearRect(0, 0, currentScreen[0].width, currentScreen[0].height);
     }
     
-        
+        var wallspd=60;
+        var increasespd=-1;
     setInterval(function(){
         clearC();
         
-        wall.locX-=30;
+        wall.locX-=wallspd;
+        wallspd+=increasespd;
+        if(wall.locX>200){
+            increasespd=1;
+        }else if((wall.locX<-200)){
+            increasespd=-1;
+        }
         //ctx.drawImage(imoige, 300, 100);
-        if(!transit){
+        
         for(i = 0; i<currentScreen.length;i++){
-            currentScreen[i].update(ctx);
-        }}else{
-            storytransition();
+            if(currentScreen[i].name!="c1"){
+                currentScreen[i].update(ctx);
+            }else{
+                ctx.globalAlpha="0.5";
+                currentScreen[i].update(ctx);
+                ctx.globalAlpha="1";
+            }
         }
         document.getElementById("demo").innerHTML = "sp"+elem1_1.locX+elem1_1.checkClicked(1,1)+mouseDown;
         
@@ -123,7 +134,7 @@
    
     function checkWhatClicked(event){
         document.getElementById("demo").innerHTML = event.clientX;
-        if(wall.locX<-987){
+        if(wall.locX<-987||wall.locX>1000){
         for(i = 0; i<currentScreen.length;i++){
             if(currentScreen[i].checkClicked(event.clientX-rect.left,event.clientY-rect.top)){
             
@@ -154,7 +165,10 @@
                             case 1:elem2_2.image.src="img/Map1.png";
                                 break;
                         }}else if(txtOne[1]==-1){
-                            startTransition("img/street.jpg");
+                            wall.image.src="img/ButtonPurple.jpg";
+                            transition();
+                            txtOne = theMainText.nextText();
+                           
                         }
                         
                         if(txtOne[0]>0){
@@ -167,6 +181,8 @@
                             transition();
                             switchScreen(6);
                         }else if(txtOne[0]==-2){
+                            
+                        }else if(txtOne[0]==-3){
                             
                         }
                         text2_1.text=txtOne[3];
@@ -204,6 +220,7 @@
                     
                     
                     return;
+                    
                 }
                 else if(currentScreen[i].name=="e1"){
                     if(cmdOpen){
@@ -244,18 +261,7 @@
         
     }
         var currentSPD=10;
-    function storytransition(){
-        if(currentSPD>0){
-        elem2_6.locX-=currentSPD;}else{
-        elem2_6.locX+=currentSPD;
-        }
-        
-        if(elem2_6.locX<2000){
-            transit=false;
-            currentSPD=10
-        }
-        elem2_6.update(ctx);
-    }
+    
     function startTransition(img){
         transit=true;
         elem2_6.image.src=img;  
