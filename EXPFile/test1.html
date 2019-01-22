@@ -11,6 +11,15 @@
     <audio autoplay id = "sound1" oncanplay="">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
+    <audio  id = "sound3" oncanplay="">
+        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+    </audio>
+    <audio  id = "sound4" oncanplay="">
+        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+    </audio>
+    <audio  id = "sound5" oncanplay="">
+        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+    </audio>
     <audio autoplay id = "sound2" oncanplay="">
         <source id = "soundSource2" src="music/Heal1.ogg" type="audio/mpeg">
     </audio>
@@ -38,6 +47,10 @@
     var downMY = 0;
     var downBX = 0;
     var downBY =0;
+    
+    var cmdOpen=false;
+    var cmdLock=true;
+    
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/ButtonPurple.jpg","s1");
     
@@ -179,7 +192,12 @@
                     
                     return;
                 }
-                else if(currentScreen[i].name=="e9"){
+                else if(currentScreen[i].name=="e1"){
+                    cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
+                   
+                    return;
+                }else if(currentScreen[i].name=="e0"){
+                    
                     
                     
                     return;

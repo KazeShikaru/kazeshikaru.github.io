@@ -31,6 +31,63 @@ function ScrEle(x, y, width, length, file,name) {
     return screenEl;
     
 };
+function CommandMenu() {
+    
+    var scoop = {
+        locX:400,
+        locY:400,
+        content:[ScrEle(400,400,200,400,"img/Box2.jpg","e0"),ScrTxt(420, 420, "Whats this umu",  "10px Arial", "red","e0")],
+        update : function (ctx){
+            this.content[0].update(ctx);
+            this.content[1].update(ctx);
+        },
+        closeThis : function (){
+            var changeX = -(this.locX+400);
+            var changeY = -(this.locY+400);
+            this.loxX+=changeX;
+            this.locY+=changeY;
+            for( i = 0; i< this.content.length;i++){
+                this.content[i].locX+=changeX;
+                this.content[i].locY+=changeY;
+            };
+        },
+        openThis:function (x,y){
+            var changeX = x-this.locX;
+            var changeY = y-this.locY;
+            this.locX+=changeX;
+            this.locY+=changeY;
+            for( i = 0; i< this.content.length;i++){
+                this.content[i].locX+=changeX;
+                this.content[i].locY+=changeY;
+            }; 
+            
+        },
+        addSpell:function(spl){
+            switch(spl){
+                   
+            }
+        },
+        checkClicked : function(disX,disY){
+            this.content[0].locX++;
+            if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){
+                return true;
+            }
+            return false;
+        },
+        checkWhereClicked : function(disX,disY){
+            if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){
+                return 1;
+            }
+            return -1;
+        },
+        
+    };
+    
+    
+    
+    return scoop;
+    
+};
 
 function ScrTxt(x, y, text,  font, color,name) {
     var screenTxt = {
@@ -84,13 +141,13 @@ function ScriptText(re) {
     
     return screenTxt;
     
-}
+};
 
 function getChara(CharacterZ){
     
     
     
+    return 0;
     
-    
-}
+};
 
