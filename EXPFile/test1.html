@@ -40,6 +40,7 @@
     var loading = 0;
     var textLeft = 5;
     var theMainText = ScriptText(9);
+    var transit =true;
     
     var canDrag = false;
     var mouseDown = false;
@@ -72,7 +73,7 @@
         downMY=event.clientY-rect.top;
         downBX=elem7_6.locX;
         downBY=elem7_6.locY;
-        if(loading>1){
+        if(loading>1 && !transit){
             checkWhatClicked(event);
         }
         
@@ -108,9 +109,11 @@
         
         wall.locX-=30;
         //ctx.drawImage(imoige, 300, 100);
-        
+        if(!transit){
         for(i = 0; i<currentScreen.length;i++){
             currentScreen[i].update(ctx);
+        }}else{
+            storytransition();
         }
         document.getElementById("demo").innerHTML = "sp"+elem1_1.locX+elem1_1.checkClicked(1,1)+mouseDown;
         
@@ -144,6 +147,16 @@
                     }else{
                        
                         var txtOne = theMainText.nextText();
+                        if(txtOne[1]>=0){
+                        switch(txtOne[1]){
+                            case 0:elem2_2.image.src="img/Map2.png";
+                                break;
+                            case 1:elem2_2.image.src="img/Map1.png";
+                                break;
+                        }}else if(txtOne[1]==-1){
+                            startTransition("img/street.jpg");
+                        }
+                        
                         if(txtOne[0]>0){
                             textLeft+=txtOne[0];
                             transition();
@@ -229,6 +242,24 @@
         }
             loading+=1;
         
+    }
+        var currentSPD=10;
+    function storytransition(){
+        if(currentSPD>0){
+        elem2_6.locX-=currentSPD;}else{
+        elem2_6.locX+=currentSPD;
+        }
+        
+        if(elem2_6.locX<2000){
+            transit=false;
+            currentSPD=10
+        }
+        elem2_6.update(ctx);
+    }
+    function startTransition(img){
+        transit=true;
+        elem2_6.image.src=img;  
+        elem2_6.locX=2000;
     }
     
     function switchScreen(nextScreen){

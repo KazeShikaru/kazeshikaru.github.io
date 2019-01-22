@@ -16,7 +16,8 @@ var elem2_2 = ScrEle(000,000,981,600,"img/Map2.png","b2");
 var elem2_3 = ScrEle(0,000,300,600,"img/RoseLeft.png","c1");
 var elem2_4 = ScrEle(400,000,400,600,"img/RenaRight.png","c2");
 var elem2_5 = ScrEle(100,400,600,150,"img/ButtonBlue3.jpg","s3");
-var screen2 = [elem2_2,elem2_3,elem2_4,elem2_1,elem2_5,text2_1,text2_2];
+var elem2_6 = ScrEle(2000,000,981,600,"img/street.jpg","b2");
+var screen2 = [elem2_2,elem2_3,elem2_4,elem2_1,elem2_5,text2_1,text2_2,elem2_6];
 
 //Camp(save, shop,next mission, storybook)
 var elem3_1 = ScrEle(0,0,981,600,"img/CC1.jpg","d1");
