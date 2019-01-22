@@ -42,14 +42,14 @@ function CommandMenu() {
             this.content[1].update(ctx);
         },
         closeThis : function (){
-            var changeX = -(this.locX+400);
-            var changeY = -(this.locY+400);
-            this.loxX+=changeX;
-            this.locY+=changeY;
+            var changeX = this.locX+400;
+            var changeY = this.locY+400;
+            this.locX-=changeX;
+            this.locY-=changeY;
             for( i = 0; i< this.content.length;i++){
-                this.content[i].locX+=changeX;
-                this.content[i].locY+=changeY;
-            };
+                this.content[i].locX-=changeX;
+                this.content[i].locY-=changeY;
+            }; 
         },
         openThis:function (x,y){
             var changeX = x-this.locX;

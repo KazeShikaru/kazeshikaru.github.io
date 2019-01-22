@@ -193,7 +193,14 @@
                     return;
                 }
                 else if(currentScreen[i].name=="e1"){
-                    cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
+                    if(cmdOpen){
+                        cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
+                        cmdOpen=false;
+                    }else{
+                        cmdMenu.closeThis();
+                        cmdOpen=true;
+                    }
+                    
                    
                     return;
                 }else if(currentScreen[i].name=="e0"){
