@@ -112,16 +112,16 @@ function ScrTxt(x, y, text,  font, color,name) {
 function ScriptText(re) {
     var screenTxt = { 
         lines:[
-            [0,0,[0,1,0,0],"Rena","I like Soup and Cream",""],
-            [0,0,[0,1,0,0],"Rose","I Dont like Soup and Cream",""],
-            [0,0,[0,1,0,0],"Rena","Thats sad",""],
-            [0,0,[0,1,0,0],"Rena","Very Sad",""],
-            [6,0,[0,1,0,0],"Rena","Let's go through this tutorial!",""],
-            [0,1,[0,1,0,0],"Rose","Sure",""],
-            [0,-1,[0,1,0,0],"Sp","Nof",""],
-            [0,0,[0,1,0,0],"Rena","First lets try melee attack",""],
-            [0,1,[0,1,0,0],"Rena","Explain",""],
-            [-1,1,[0,1,0,0],"","",""],
+            [0,0,[-4,1,2,3],"Rena","I like Soup and Cream",[100,200,300,800]],
+            [0,0,[0,-1,2,3],"Rose","I Dont like Soup and Cream",[100,200,400,800]],
+            [0,0,[0,1,-2,3],"Rena","Thats sad",[000,200,300,600]],
+            [0,0,[4,1,2,3],"Rena","Very Sad",[100,200,300,800]],
+            [6,0,[0,1,2,3],"Rena","Let's go through this tutorial!",[100,200,250,400]],
+            [0,1,[-3,1,2,3],"Rose","Sure",[100,200,400,600]],
+            [0,-1,[0,1,2,3],"Sp","Nof",[000,200,400,600]],
+            [0,0,[4,1,2,3],"Rena","First lets try melee attack",[100,200,400,700]],
+            [0,1,[0,1,2,3],"Rena","Explain",[100,200,400,600]],
+            [-1,1,[0,1,2,3],"","",[100,200,400,600]],
         
         ],
         currentLine:0,
@@ -143,7 +143,13 @@ function ScriptText(re) {
     return screenTxt;
     
 };
-
+function getLevel1(CharacterZ){
+    
+    
+    
+    return 0;
+    
+};
 function getChara(CharacterZ){
     
     

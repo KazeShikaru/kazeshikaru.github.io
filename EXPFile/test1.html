@@ -40,7 +40,7 @@
     var loading = 0;
     var textLeft = 5;
     var theMainText = ScriptText(9);
-    var transit =false;
+    var transit = false;
     
     var canDrag = false;
     var mouseDown = false;
@@ -59,7 +59,7 @@
     var imoige = elem1_1.image;
     //imoige.src = "img/Map1.png";
     /////////////////////////////////////////////
-    document.getElementById("demo").innerHTML = "sp"+elem1_1.locX+elem1_1.checkClicked(1,1);
+    document.getElementById("demo").innerHTML = "sp" + elem1_1.locX+elem1_1.checkClicked(1,1);
     
     
     
@@ -84,13 +84,13 @@
             
             elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));       
             elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
-            if(elem7_6.locX<981-1920){
-                elem7_6.locX=981-1920;
+            if(elem7_6.locX<981-elem7_6.width){
+                elem7_6.locX=981-elem7_6.width;
             }else if(elem7_6.locX>0){
                 elem7_6.locX=0;
             }
-            if(elem7_6.locY<600-1280){
-                elem7_6.locY=600-1280;
+            if(elem7_6.locY<600-elem7_6.length){
+                elem7_6.locY=600-elem7_6.length;
             }else if(elem7_6.locY>0){
                 elem7_6.locY=0;
             }
@@ -113,20 +113,40 @@
     function clearC(){
         ctx.clearRect(0, 0, currentScreen[0].width, currentScreen[0].height);
     }
-    
+        var currentWallS = 0;
+        var patern=[30,29,28,27,26,25,24,22,22,22,9,8,7,6,5,4,3,2,1,2,3,4,5,4,3,2,1,2,3,4,5,6,7,8,9,10,20,20,20,20,20,20,20,20,20,20,10,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20];
+    function nextWallspeed(){
+        
+        
+        if(currentWallS<patern.length-1){
+            
+            return patern[currentWallS++];
+        }else{
+            transit=false;
+            return 0;
+        }
+        
+    }
+    function startTransit(img){
+        transit=true;
+        currentWallS=0;
+        wall.image.src=img;
+        wall.locX=300;
+    }
         var wallspd=30;
         var increasespd=-1;
+        
     setInterval(function(){
         clearC();
         
-        wall.locX-=wallspd;
+        if(!transit){
+            wall.locX-=wallspd;
+        }else{
+            wall.locX-=nextWallspeed();
+        }
         //wallspd+=increasespd;
         
-        if(wall.locX>200){
-            increasespd=1;
-        }else if((wall.locX<-200)){
-            increasespd=-1;
-        }
+        
         //ctx.drawImage(imoige, 300, 100);
         
         for(i = 0; i<currentScreen.length;i++){
@@ -153,23 +173,59 @@
                 if(currentScreen[i].name.substring(0,2)=="s1"){
                
                     switchScreen(1);
-                    transition()
+                    startTransit("img/street.jpg");
                     
                     return;
                 }else if(currentScreen[i].name=="s2"){
                 
                     switchScreen(0);
-                    transition()
+                    transition("img/gaypuddle.png")
                     
                     return;
                 }else if(currentScreen[i].name=="s3"){
                     if(textLeft==0){
-                        transition()
+                        transition("img/redGrid.png");
                         switchScreen(2);
                         
                     }else{
                        
                         var txtOne = theMainText.nextText();
+                        
+                        var charas = txtOne[2];
+                        var charasLoc = txtOne[5];
+                        
+                        var item1 =getCharaImage(charas[0]);
+                        elem2_3.image.src=item1[0];
+                        elem2_3.length=item1[1];
+                        elem2_3.width=item1[2];
+                        elem2_3.locY=item1[3];
+                        elem2_3.locX=charasLoc[0];
+                        
+                        item1 =getCharaImage(charas[1]);
+                        elem2_4.image.src=item1[0];
+                        elem2_4.length=item1[1];
+                        elem2_4.width=item1[2];
+                        elem2_4.locY=item1[3];
+                        elem2_4.locX=charasLoc[1];
+                        
+                        item1 =getCharaImage(charas[2]);
+                        elem2_7.image.src=item1[0];
+                        elem2_7.length=item1[1];
+                        elem2_7.width=item1[2];
+                        elem2_7.locY=item1[3];
+                        elem2_7.locX=charasLoc[2];
+                        
+                        item1 =getCharaImage(charas[3]);
+                        elem2_8.image.src=item1[0];
+                        elem2_8.length=item1[1];
+                        elem2_8.width=item1[2];
+                        elem2_8.locY=item1[3];
+                        elem2_8.locX=charasLoc[3];
+                        
+                        
+                        
+                        
+                        
                         if(txtOne[1]>=0){
                         switch(txtOne[1]){
                             case 0:elem2_2.image.src="img/Map2.png";
@@ -177,20 +233,20 @@
                             case 1:elem2_2.image.src="img/Map1.png";
                                 break;
                         }}else if(txtOne[1]==-1){
-                            wall.image.src="img/ButtonPurple.jpg";
-                            transition();
+                           
+                            transition("img/ButtonPurple.jpg");
                             txtOne = theMainText.nextText();
                            
                         }
                         
                         if(txtOne[0]>0){
                             textLeft+=txtOne[0];
-                            transition();
+                            transition("img/fancy.png");
                             switchScreen(2);
                             
                             
                         }else if(txtOne[0]==-1){
-                            transition();
+                            transition("img/ButtonPurple.jpg");
                             switchScreen(6);
                         }else if(txtOne[0]==-2){
                             
@@ -227,7 +283,7 @@
                     
                     return;
                 }else if(currentScreen[i].name=="s7"){
-                    transition();
+                    transition("img/fancy.png");
                     switchScreen(1);
                     
                     
@@ -256,7 +312,8 @@
         }
         
     }
-        function transition(){
+        function transition(file){
+            wall.image.src=file;
             wall.locX=0;
         }
         
@@ -279,7 +336,22 @@
         elem2_6.image.src=img;  
         elem2_6.locX=2000;
     }
-    
+    function getCharaImage(num){
+        switch(num){
+            //height,width,y
+            case 1: return ["img/RenaRight.png",400,250,200];
+            case -1: return ["img/RenaLeft.png",400,250,200];
+            case 2: return ["img/RoseLeft.png",400,200,200];
+            case -2: return ["img/RoseRight.png",400,200,200];
+            case 3: return ["img/AishaLeft.png",350,175,200];
+            case -3: return ["img/AishaRight.png",350,175,200];
+            case 4: return ["img/LabyLeft.png",400,250,200];
+            case -4: return ["img/LabyRight.png",400,250,200];
+            case 5: return ["img/LuCenter.png",400,200,200];
+        }
+        
+        return ["img/blank.png",200,300,100];
+    }
     function switchScreen(nextScreen){
         var music = document.getElementById("sound2");
         switch(nextScreen){
