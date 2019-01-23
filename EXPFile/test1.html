@@ -81,9 +81,20 @@
     });
     soup.addEventListener("mousemove",function(event){ 
         if(mouseDown && currentScreen==screen7){
-            elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));
             
+            elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));       
             elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
+            if(elem7_6.locX<981-1920){
+                elem7_6.locX=981-1920;
+            }else if(elem7_6.locX>0){
+                elem7_6.locX=0;
+            }
+            if(elem7_6.locY<600-1280){
+                elem7_6.locY=600-1280;
+            }else if(elem7_6.locY>0){
+                elem7_6.locY=0;
+            }
+            
         }
         
     });
@@ -103,13 +114,14 @@
         ctx.clearRect(0, 0, currentScreen[0].width, currentScreen[0].height);
     }
     
-        var wallspd=60;
+        var wallspd=30;
         var increasespd=-1;
     setInterval(function(){
         clearC();
         
         wall.locX-=wallspd;
-        wallspd+=increasespd;
+        //wallspd+=increasespd;
+        
         if(wall.locX>200){
             increasespd=1;
         }else if((wall.locX<-200)){
