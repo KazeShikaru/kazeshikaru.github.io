@@ -143,13 +143,46 @@ function ScriptText(re) {
     return screenTxt;
     
 };
-function getLevel1(CharacterZ){
+function getLevel1(){
+    var gameset = {
+        myTile:[maketile(1,1,1)],
+        
+        update:function(ctx){
+            this.myTile[0].update(ctx,elem7_6.locX,elem7_6.locY);
+        },
+        checkWhereClicked : function(disX,disY){
+            if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){
+                return 1;
+            }
+            return -1;
+        },
+        
+    } 
     
-    
-    
-    return 0;
+    return gameset;
     
 };
+
+function maketile(c, r,type) {
+    
+    var screenTile = {
+        image : new Image(),
+        update:function(ctx,x,y){
+            ctx.drawImage(this.image,x,y,64, 64);
+        },
+        checkWhereClicked : function(disX,disY){
+            if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){
+                return 1;
+            }
+            return -1;
+        },
+    };
+    screenTile.image.src="img/tileGrass.png";
+    return screenTile;
+    
+};
+
+
 function getChara(CharacterZ){
     
     
