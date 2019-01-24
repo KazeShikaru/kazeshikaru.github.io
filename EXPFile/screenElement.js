@@ -145,10 +145,13 @@ function ScriptText(re) {
 };
 function getLevel1(){
     var gameset = {
-        myTile:[maketile(1,1,1)],
+        myTile:[maketile(1,1,1),maketile(2,2,1)],
         
         update:function(ctx){
-            this.myTile[0].update(ctx,elem7_6.locX,elem7_6.locY);
+            for(var i = 0; i< this.myTile.length;i++){
+                this.myTile[i].update(ctx,elem7_6.locX,elem7_6.locY);
+            }
+            
         },
         checkWhereClicked : function(disX,disY){
             if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){
@@ -166,9 +169,11 @@ function getLevel1(){
 function maketile(c, r,type) {
     
     var screenTile = {
+        c:c,
+        r:r,
         image : new Image(),
         update:function(ctx,x,y){
-            ctx.drawImage(this.image,x,y,64, 64);
+            ctx.drawImage(this.image,x+64*c,y+64*r,64, 64);
         },
         checkWhereClicked : function(disX,disY){
             if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){

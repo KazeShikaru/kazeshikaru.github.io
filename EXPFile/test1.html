@@ -79,6 +79,19 @@
         
         
     });
+    soup.addEventListener("touchstart",function(event){
+        
+        mouseDown=true;
+        downMX=event.clientX-rect.left;
+        downMY=event.clientY-rect.top;
+        downBX=elem7_6.locX;
+        downBY=elem7_6.locY;
+        if(loading>1 && !transit){
+            checkWhatClicked(event);
+        }
+        
+        
+    });
     soup.addEventListener("mousemove",function(event){ 
         if(mouseDown && currentScreen==screen7){
             
@@ -98,7 +111,31 @@
         }
         
     });
+    soup.addEventListener("touchmove",function(event){ 
+        if(mouseDown && currentScreen==screen7){
+            
+            elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));       
+            elem7_6.locY=downBY-(downMY-(event.clientY-rect.top));
+            if(elem7_6.locX<972-elem7_6.width){
+                elem7_6.locX=972-elem7_6.width;
+            }else if(elem7_6.locX>0){
+                elem7_6.locX=0;
+            }
+            if(elem7_6.locY<600-elem7_6.length){
+                elem7_6.locY=600-elem7_6.length;
+            }else if(elem7_6.locY>0){
+                elem7_6.locY=0;
+            }
+            
+        }
+        
+    });
     soup.addEventListener("mouseup",function(event){
+        
+        mouseDown=false;
+        
+    });
+    soup.addEventListener("touchend",function(event){
         
         mouseDown=false;
         
