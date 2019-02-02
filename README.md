@@ -1,8 +1,9 @@
 # kazeshikaru.github.io
+First attempt at javascript.
 
-Sweet & tasty release for the fans, new update every saturday at 4AM.
-We planing on expanding the soup stock by 3 decinos withing the next 6 light years.
-We thank you for your patience.
+Through this project I have attempted to create a game in javascript canvas. 
+I am learning about the potential of javascript and the ease to create easily accessible content for the internet.
 
-Sincerely, 
-Kaze
+
+
+Art is being created by my colleagues to replace the stock images currently present. 
