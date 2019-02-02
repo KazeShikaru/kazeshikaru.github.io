@@ -1,4 +1,4 @@
-# kazeshikaru.github.io
+# UBE Emblem
 First attempt at javascript.
 
 Through this project I have attempted to create a game in javascript canvas. 
