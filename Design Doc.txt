@@ -1,0 +1,27 @@
+Staff:
+Code: Me
+Art: I'll find people
+Music: I'll find people
+
+Overview:
+No, stop reading here, nothing important follows.
+
+paragraph 2
+
+paragraph 3
+
+Context:
+Creation of Fire Emblem Rip-off.
+
+Goals: Creation of complete javascript game.
+
+Non-goals: Attracting an active userbase.
+
+Milestones in no certain order:
+[Saving mechanics](Reward: 1 coffee)
+[Movement mechanics](Reward: 1 coffee)
+[Skill tree](Reward: 1 coffee)
+[Character Class and Stats](Reward: 1 coffee)
+[Enemy balancing](Reward: 1 coffee)
+[Weapons and Potions shop](Reward: 1 coffee)
+[Turn based combat](Reward: 1 coffee)
