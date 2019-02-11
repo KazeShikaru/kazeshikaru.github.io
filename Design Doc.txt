@@ -25,3 +25,44 @@ Milestones in no certain order:
 [Enemy balancing](Reward: 1 coffee)
 [Weapons and Potions shop](Reward: 1 coffee)
 [Turn based combat](Reward: 1 coffee)
+[Attack Matrix](Reward: 1 coffee)
+
+Current User Interactions:
+Basic Sample Sounds can be heard at loading, website takes about 10 seconds to load properly.
+Images are shown, and many buttons are properly placed, sample backgrounds appear on most screens.
+
+Cross Divisional Joint work:
+Artist work and Coding work currently do not cross-interfere therefore Joint command is unessesary at this point.
+
+Testability:
+Very low, manual debugging is nessesary before and after each and every commit.
+
+Possibilites for expansion:
+Mobile version of the website, user login for cloud saving.
+
+Timeline:
+Unlimited as of now, progress pace is reasonable.
+
+Histogram of data 
+                                     Code progress                                                                  art progress                                                     Story Progress
+                                     -------------                                                                  ------------                                                     --------------
+                                     -------------                                                                  ------------                                                     --------------
+                                     -------------                                                                  ------------                                                     --------------
+                                     -------------                                                                  ------------                                                     --------------
+                                     -------------                                                                      10%                                                          --------------
+                                     -------------                                                                                                                                   --------------
+                                     -------------                                                                                                                                   --------------
+                                     -------------                                                                                                                                   --------------
+                                          30%                                                                                                                                        --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                     --------------
+                                                                                                                                                                                          70%
+                                                                       
+ 
+                                     ______________________________________________________________________________________________________________________________________________________________
