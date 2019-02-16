@@ -51,7 +51,8 @@
     
     var cmdOpen=false;
     var cmdLock=true;
-    
+    var skillopen = false;
+    var skillchara = 0;
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/street.jpg","s1");
     
@@ -79,6 +80,8 @@
         
         
     });
+        
+    
     soup.addEventListener("touchstart",function(event){
         
         mouseDown=true;
@@ -93,6 +96,18 @@
         
     });
     soup.addEventListener("mousemove",function(event){ 
+        if(currentScreen==screen6){
+            if(event.clientX-rect.left>100){
+                infbox.openThis(event.clientX-rect.left,event.clientY-rect.top);
+            }else{
+                infbox.closeThis();
+            }
+            
+                      
+            
+        }
+                
+        
         if(mouseDown && currentScreen==screen7){
             
             elem7_6.locX=downBX-(downMX-(event.clientX-rect.left));       
@@ -305,6 +320,7 @@
                 }else if(currentScreen[i].name=="s4"){
                 
                     switchScreen(3);
+                    
                     
                     return;
                 }else if(currentScreen[i].name=="s5"){
