@@ -97,7 +97,7 @@
     });
     soup.addEventListener("mousemove",function(event){ 
         if(currentScreen==screen6){
-            if(event.clientX-rect.left>100){
+            if(infbox.checkContained(event.clientX-rect.left, event.clientY-rect.top)){
                 infbox.openThis(event.clientX-rect.left,event.clientY-rect.top);
             }else{
                 infbox.closeThis();

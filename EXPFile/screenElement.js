@@ -93,10 +93,11 @@ function InfoBox() {
    var scoop = {
         locX:400,
         locY:400,
-        content:[ScrEle(400,400,200,400,"img/Box2.jpg","e0"),ScrTxt(420, 420, "Whats this umu",  "10px Arial", "red","e0")],
+        content:[ScrEle(400,400,200,400,"img/Box2.jpg","e0"),ScrTxt(420, 420, "Whats this umu",  "10px Arial", "red","e0"), ScrTxt(420, 430, "This Box is an ability",  "10px Arial", "red","e0")],
         update : function (ctx){
             this.content[0].update(ctx);
             this.content[1].update(ctx);
+            this.content[2].update(ctx);
         },
         closeThis : function (){
             var changeX = this.locX+400;
@@ -130,6 +131,30 @@ function InfoBox() {
                 return true;
             }
             return false;
+        },
+        checkContained: function(x,y){
+            for(var l= 2;l<14;l++){
+                var tempElem = screen6[l];
+                if(x-tempElem.locX>0&&x-tempElem.locX<tempElem.length && y-tempElem.locY>0&&y-tempElem.locY<tempElem.width){
+                    
+                    
+                    switch(l){
+                        case 2:this.content[2].text="Fusion Core";
+                            break;
+                        case 3:this.content[2].text="Version Core";
+                            break;
+                        case 4:this.content[2].text="Nano Core";
+                            break;
+                           
+                           
+                           
+                    }
+                    
+                    
+                    
+                    return true;
+                }
+            }
         },
         checkWhereClicked : function(disX,disY){
             if(disX>this.locX && disX<this.locX+this.width && disY>this.locY&&disY<this.locY+this.length){
