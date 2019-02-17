@@ -12,16 +12,16 @@
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
     <audio  id = "sound3" oncanplay = "">
-        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+        <source id = "soundSource2" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
     <audio  id = "sound4" oncanplay = "">
-        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+        <source id = "soundSource3" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
     <audio  id = "sound5" oncanplay = "">
-        <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg">
+        <source id = "soundSource4" src="music/Emotions.mp3" type="audio/mpeg">
     </audio>
     <audio autoplay id = "sound2" oncanplay="">
-        <source id = "soundSource2" src="music/Heal1.ogg" type="audio/mpeg">
+        <source id = "soundSource5" src="music/Heal1.ogg" type="audio/mpeg">
     </audio>
     
     <p id="demo" style="color:white">Soup</p>
@@ -356,6 +356,18 @@
                     return;
                 }else if(currentScreen[i].name=="e0"){
                     
+                    
+                    
+                    return;
+                }else if(currentScreen[i].name=="save1"){
+                
+                    localStorage.setItem("hp", 20);
+                    
+                    
+                    return;
+                }else if(currentScreen[i].name=="save2"){
+                
+                    localStorage.setItem("mp", 10);
                     
                     
                     return;

@@ -133,7 +133,7 @@ function InfoBox() {
             return false;
         },
         checkContained: function(x,y){
-            for(var l= 2;l<14;l++){
+            for(var l= 2;l<22;l++){
                 var tempElem = screen6[l];
                 if(x-tempElem.locX>0&&x-tempElem.locX<tempElem.length && y-tempElem.locY>0&&y-tempElem.locY<tempElem.width){
                     
@@ -270,10 +270,26 @@ function maketile(c, r,type) {
 
 
 function getChara(CharacterZ){
+    var thisCharacter = {
+        hp:100,
+        mp:200,
+        def:100,
+        res:0.2,
+        speed:4,
+        initiation:30,
+        mpRegen:5,
+        attack:40,
+        vigilance:30,
+        fatalShock:1,
+        levelUp:function(){
+            
+        },
+        
+        
+    };
     
     
-    
-    return 0;
+    return thisCharacter;
     
 };
 
