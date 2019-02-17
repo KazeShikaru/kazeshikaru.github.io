@@ -38,9 +38,11 @@ var text3_4 = ScrTxt(630, 525, "Shop",  "30px Arial", "red","txt6");
 var screen3 = [elem3_1,elem3_2,elem3_3,elem3_4,elem3_5,text3_1,text3_2,text3_3,text3_4];
 //Shopscreen(Buy, Sell, background, up,down, buy)
 var elem4_1 = ScrEle(50,50,881,500,"img/CC2.png","b4");
-var elem4_2 = ScrEle(620,500,120,50,"img/pink.png","s3a");
-
-var screen4 = [elem4_1,elem4_2];
+var elem4_2 = ScrEle(760,490,120,50,"img/pink.png","s3a");
+var elem4_3 = ScrEle(75,75,440,450,"img/red.png","b4");
+var elem4_4 = ScrEle(535,75,380,400,"img/green.png","b4");
+var text4_1 = ScrTxt(535, 520, "Money: 0",  "30px Arial", "red","txt6");
+var screen4 = [elem4_1,elem4_2,elem4_3,elem4_4,text4_1];
 //save screen
 
 var elem5_1 = ScrEle(50,50,881,500,"img/CC3.png","b4");
@@ -76,17 +78,17 @@ var sk18 = ScrEle(260,440,60,60,"Sc2/Sk12.png","ssr");
 var sk19 = ScrEle(340,440,60,60,"Sc2/Sk13.png","ssr");
 var sk20 = ScrEle(420,440,60,60,"Sc2/Sk14.png","ssr");
 
-var statText1 = ScrTxt(500, 250, "Hp: 300",  "20px Impact", "red","txt1");
-var statText2 = ScrTxt(500, 280, "Mp: 400",  "20px Impact", "red","txt1");
-var statText3 = ScrTxt(500, 310, "Def: 100",  "20px Impact", "red","txt1");
-var statText4 = ScrTxt(500, 340, "Res: 20%",  "20px Impact", "red","txt1");
-var statText5 = ScrTxt(500, 370, "Speed: 4",  "20px Impact", "red","txt1");
+var statText1 = ScrTxt(500, 250, "Hp: 300", "20px Impact", "red","txt1");
+var statText2 = ScrTxt(500, 280, "Mp: 400", "20px Impact", "red","txt1");
+var statText3 = ScrTxt(500, 310, "Def: 100", "20px Impact", "red","txt1");
+var statText4 = ScrTxt(500, 340, "Res: 20%", "20px Impact", "red","txt1");
+var statText5 = ScrTxt(500, 370, "Speed: 4", "20px Impact", "red","txt1");
 var statText6 = ScrTxt(500, 400, "Initiation: 30%",  "20px Impact", "red","txt1");
-var statText7 = ScrTxt(500, 430, "MpRegen: 5",  "20px Impact", "red","txt1");
-var statText8 = ScrTxt(700, 250, "Attack: 10",  "20px Impact", "red","txt1");
-var statText9 = ScrTxt(700, 280, "Vigilance: 0",  "20px Impact", "red","txt1");
-var statText10 = ScrTxt(700, 310, "Fatal Shock: 1",  "20px Impact", "red","txt1");
-var statText11 = ScrTxt(700, 340, "",  "20px Impact", "red","txt1");
+var statText7 = ScrTxt(500, 430, "MpRegen: 5", "20px Impact", "red","txt1");
+var statText8 = ScrTxt(700, 250, "Attack: 10", "20px Impact", "red","txt1");
+var statText9 = ScrTxt(700, 280, "Vigilance: 0", "20px Impact", "red","txt1");
+var statText10 = ScrTxt(700, 310, "Fatal Shock: 1", "20px Impact", "red","txt1");
+var statText11 = ScrTxt(700, 340, "Crit: 30%",  "20px Impact", "red","txt1");
 var statText12 = ScrTxt(700, 370, "",  "20px Impact", "red","txt1");
 var statText13 = ScrTxt(700, 400, "",  "20px Impact", "red","txt1");
 var statText14 = ScrTxt(700, 430, "",  "20px Impact", "red","txt1");
