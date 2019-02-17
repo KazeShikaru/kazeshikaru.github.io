@@ -36,6 +36,8 @@ var text3_2 = ScrTxt(230, 525, "Skill",  "30px Arial", "red","txt4");
 var text3_3 = ScrTxt(430, 525, "Save",  "30px Arial", "red","txt5");
 var text3_4 = ScrTxt(630, 525, "Shop",  "30px Arial", "red","txt6");
 var screen3 = [elem3_1,elem3_2,elem3_3,elem3_4,elem3_5,text3_1,text3_2,text3_3,text3_4];
+
+
 //Shopscreen(Buy, Sell, background, up,down, buy)
 var elem4_1 = ScrEle(50,50,881,500,"img/CC2.png","b4");
 var elem4_2 = ScrEle(760,490,120,50,"img/pink.png","s3a");
@@ -43,8 +45,9 @@ var elem4_3 = ScrEle(75,75,440,450,"img/red.png","b4");
 var elem4_4 = ScrEle(535,75,380,400,"img/green.png","b4");
 var text4_1 = ScrTxt(535, 520, "Money: 0",  "30px Arial", "red","txt6");
 var screen4 = [elem4_1,elem4_2,elem4_3,elem4_4,text4_1];
-//save screen
 
+
+//save screen
 var elem5_1 = ScrEle(50,50,881,500,"img/CC3.png","b4");
 var elem5_2 = ScrEle(620,500,120,50,"img/pink.png","s3a");
 
