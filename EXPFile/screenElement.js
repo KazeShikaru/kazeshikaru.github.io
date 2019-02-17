@@ -271,16 +271,16 @@ function maketile(c, r,type) {
 
 function getChara(CharacterZ){
     var thisCharacter = {
-        hp:100,
-        mp:200,
-        def:100,
-        res:0.2,
-        speed:4,
-        initiation:30,
-        mpRegen:5,
-        attack:40,
-        vigilance:30,
-        fatalShock:1,
+        hp:100*CharacterZ,
+        mp:200*CharacterZ,
+        def:100*CharacterZ,
+        res:0.2*CharacterZ,
+        speed:4*CharacterZ,
+        initiation:30*CharacterZ,
+        mpRegen:5*CharacterZ,
+        attack:40*CharacterZ,
+        vigilance:30*CharacterZ,
+        fatalShock:1*CharacterZ,
         levelUp:function(){
             
         },

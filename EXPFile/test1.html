@@ -59,6 +59,7 @@
     var currentScreen = screen1;
     var imoige = elem1_1.image;
     //imoige.src = "img/Map1.png";
+    var charactersList=[getChara(0),getChara(1),getChara(2)];
     /////////////////////////////////////////////
     document.getElementById("demo").innerHTML = "sp" + elem1_1.locX+elem1_1.checkClicked(1,1);
     
@@ -369,6 +370,55 @@
                 
                     localStorage.setItem("mp", 10);
                     
+                    
+                    return;
+                }
+                else if(currentScreen[i].name=="lulu"){
+                
+                    statText1.text="Hp: "+charactersList[0].hp;
+                    statText2.text="Mp: "+charactersList[0].mp;
+                    statText3.text="Def: "+charactersList[0].def;
+                    statText4.text="Res: "+charactersList[0].res;
+                    statText5.text="Speed: "+charactersList[0].speed;
+                    statText6.text="Initiation: "+charactersList[0].initiation;
+                    statText7.text="MpRegen: "+charactersList[0].mpRegen;
+                    statText8.text="Attack: "+charactersList[0].attack;
+                    statText9.text="Vigilance: "+charactersList[0].vigilance;
+                    statText10.text="Fatal Shock: "+charactersList[0].fatalShock;
+                    
+                    
+                    
+                    return;
+                }
+                else if(currentScreen[i].name=="eric"){
+                
+                    statText1.text="Hp: "+charactersList[1].hp;
+                    statText2.text="Mp: "+charactersList[1].mp;
+                    statText3.text="Def: "+charactersList[1].def;
+                    statText4.text="Res: "+charactersList[1].res;
+                    statText5.text="Speed: "+charactersList[1].speed;
+                    statText6.text="Initiation: "+charactersList[1].initiation;
+                    statText7.text="MpRegen: "+charactersList[1].mpRegen;
+                    statText8.text="Attack: "+charactersList[1].attack;
+                    statText9.text="Vigilance: "+charactersList[1].vigilance;
+                    statText10.text="Fatal Shock: "+charactersList[1].fatalShock;
+                    
+                    
+                    return;
+                }
+                else if(currentScreen[i].name=="mina"){
+                
+                    
+                    statText1.text="Hp: "+charactersList[2].hp;
+                    statText2.text="Mp: "+charactersList[2].mp;
+                    statText3.text="Def: "+charactersList[2].def;
+                    statText4.text="Res: "+charactersList[2].res;
+                    statText5.text="Speed: "+charactersList[2].speed;
+                    statText6.text="Initiation: "+charactersList[2].initiation;
+                    statText7.text="MpRegen: "+charactersList[2].mpRegen;
+                    statText8.text="Attack: "+charactersList[2].attack;
+                    statText9.text="Vigilance: "+charactersList[2].vigilance;
+                    statText10.text="Fatal Shock: "+charactersList[2].fatalShock;
                     
                     return;
                 }
