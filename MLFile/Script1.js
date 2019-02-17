@@ -26,10 +26,13 @@ function draw(){
 }
 function mouseDragged() 
 { 
+    
 	strokeWeight(10);
 	line(mouseX, mouseY, pmouseX, pmouseY);
 }
-
+function changeColor(r,g,b){
+    stroke(r,g,b);
+}
 function clearSoup(){
     fill(255);
     rect(0, 0, width, height);

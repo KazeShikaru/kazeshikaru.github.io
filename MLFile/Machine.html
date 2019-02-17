@@ -10,6 +10,14 @@
 
     <body>
         <p id="text1">Prediction</p>
+        <div>
+            <button type="button" onclick={changeColor(0,0,0)}>Black</button>
+            <button type="button" onclick={changeColor(255,0,0)}>Red</button>
+            <button type="button" onclick={changeColor(0,255,0)}>Green</button>
+            <button type="button" onclick={changeColor(0,0,255)}>Blue</button>
+            <button type="button" onclick={changeColor(255,255,0)}>Yellow</button>
+            <button type="button" onclick={changeColor(255,0,255)}>Purple</button>
+        </div>
         <button type="button" onclick={predict()}>Predict</button>
         <button type="button" onclick={clearSoup()}>Clear</button>
       <script>
