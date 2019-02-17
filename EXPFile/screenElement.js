@@ -92,8 +92,8 @@ function InfoBox() {
     
    var scoop = {
         locX:400,
-        locY:400,
-        content:[ScrEle(400,400,200,400,"img/Box2.jpg","e0"),ScrTxt(420, 420, "Whats this umu",  "10px Arial", "red","e0"), ScrTxt(420, 430, "This Box is an ability",  "10px Arial", "red","e0")],
+        locY:300,
+        content:[ScrEle(400,300,200,250,"img/Box2.jpg","e0"),ScrTxt(420, 320, "Whats this umu",  "10px Arial", "red","e0"), ScrTxt(420, 330, "This Box is an ability",  "10px Arial", "red","e0")],
         update : function (ctx){
             this.content[0].update(ctx);
             this.content[1].update(ctx);
@@ -110,6 +110,9 @@ function InfoBox() {
             }; 
         },
         openThis:function (x,y){
+            if(y>300){
+                y=300;
+            }
             var changeX = x-this.locX;
             var changeY = y-this.locY;
             this.locX+=changeX;
