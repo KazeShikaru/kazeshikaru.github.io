@@ -227,10 +227,17 @@ function ScriptText(re) {
     return screenTxt;
     
 };
+function isRealValue(obj)
+{
+ return obj && obj !== 'null' && obj !== 'undefined';
+};
+var faketile =make2DArray(16,10);
+var objectTileArray = make2DArray(16,10);
 function getLevel1(){
     var gameset = {
         
         mytileArray:[],
+        movetileArray:[],
         update:function(ctx){
             
             
@@ -240,6 +247,15 @@ function getLevel1(){
             
                 }
             } 
+            for (let g=0;g<mytileArray.length;g++){
+                for(let f = 0; f<mytileArray[0].length;f++){
+                    if(isRealValue(movetileArray[g][f])){                        
+                      movetileArray[g][f].update(ctx,elem7_6.locX,elem7_6.locY);
+                        
+                    }
+            
+                }
+            }
             
           
         },
@@ -250,18 +266,47 @@ function getLevel1(){
             return -1;
         },
         clickThis : function(disX,disY){
-            console.log(disX,disY)
-            for (let g=0;g<mytileArray.length;g++){
-                for(let f = 0; f<mytileArray[0].length;f++){
+            movetileArray=make2DArray(16,10);
+            faketile=make2DArray(16,10);
+            console.log(movetileArray);
+            //console.log(disX,disY)
+            let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
+            //coreTile.image.src="img/pink.png";
+            faketile[coreTile.c][coreTile.r]=9;
+            console.log(faketile);
+            for(let range2 = 5;range2>0;range2--){   
+                for (let g=0;g<mytileArray.length;g++){
+                    for(let f = 0; f<mytileArray[0].length;f++){
+                        
+                        getNextMovement(1,g,f);
                     
                     
-                    mytileArray[g][f].clickThis(disX-elem7_6.locX,disY-elem7_6.locY);
             
-                }
-            } 
+                    }
+                } 
+            }
+            console.log(faketile);
+            for (let g=0;g<mytileArray.length;g++){
+                    for(let f = 0; f<mytileArray[0].length;f++){
+                        
+                        if(faketile[g][f]>0){
+                            movetileArray[g][f]=maketile(g,f,2);
+                            //mytileArray[g][f].image.src="img/pink.png";
+                            
+                            
+                            
+                        }
+                    
+                    
+            
+                    }
+                } 
+            console.log(faketile);
+            
         },
         
     };
+    this.movetileArray=make2DArray(16,10);
     this.mytileArray=make2DArray(16,10);
     for (let g=0;g<this.mytileArray.length;g++){
         for(let f = 0; f<this.mytileArray[0].length;f++){
@@ -273,12 +318,44 @@ function getLevel1(){
     return gameset;
     
 };
+function getNextMovement(UnitType,localX,localY){
+    if(UnitType==1){
+        
+        let tempNum= faketile[localX][localY];
+        if(localX>0){
+            if(faketile[localX-1][localY]<faketile[localX][localY]-2){
+                faketile[localX-1][localY]=faketile[localX][localY]-2;
+            }
+        }
+        if(localX<15){
+            if(faketile[localX+1][localY]<faketile[localX][localY]-2){
+                faketile[localX+1][localY]=faketile[localX][localY]-2;
+            }
+        }
+        if(localY>0){
+            if(faketile[localX][localY-1]<faketile[localX][localY]-2){
+                faketile[localX][localY-1]=faketile[localX][localY]-2;
+            }
+        }
+        if(localY<9){
+            if(faketile[localX][localY+1]<faketile[localX][localY]-2){
+                faketile[localX][localY+1]=faketile[localX][localY]-2;
+            }
+        }
+        
+        
+    }
+    
+    
+    
+}
 
 function maketile(c, r,type) {
     
     var screenTile = {
         c:c,
         r:r,
+        tileType:4,
         image : new Image(),
         update:function(ctx,x,y){
             ctx.drawImage(this.image,x+64*c,y+64*r,64, 64);
@@ -291,20 +368,24 @@ function maketile(c, r,type) {
             return -1;
         },
         clickThis : function(disX,disY){
-            
-            
+              this.image.src="img/pink.png";
+            /*
             console.log(Math.floor(disX/64)==this.c&&Math.floor(disY/64==this.r));
             if(Math.abs(Math.floor(disX/64)-this.c)+Math.abs(Math.floor(disY/64)-this.r)<5){
                console.log("True");
                 this.image.src="img/pink.png";
             }else{
                 this.image.src="img/tileGrass.png";
-            }
+            }*/
                  
             
         },
     };
-    screenTile.image.src="img/tileGrass.png";
+    if(type ==1){
+        screenTile.image.src="img/tileGrass.png";
+    }else if(type == 2){
+        screenTile.image.src="img/pink.png";
+    }
     return screenTile;
     
 };
