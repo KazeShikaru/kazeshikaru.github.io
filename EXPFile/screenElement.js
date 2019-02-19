@@ -233,6 +233,7 @@ function isRealValue(obj)
 };
 var faketile =make2DArray(16,10);
 var objectTileArray = make2DArray(16,10);
+//objectTileArray[5][6]=0;
 function getLevel1(){
     var gameset = {
         
@@ -268,7 +269,7 @@ function getLevel1(){
         clickThis : function(disX,disY){
             movetileArray=make2DArray(16,10);
             faketile=make2DArray(16,10);
-            console.log(movetileArray);
+            
             //console.log(disX,disY)
             let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
             //coreTile.image.src="img/pink.png";
@@ -278,16 +279,18 @@ function getLevel1(){
                 let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
                 for (let g=0;g<mytileArray.length;g++){
                     for(let f = 0; f<mytileArray[0].length;f++){
+                        let movnum = calculateMovement(mytileArray[g][f].tileType,1);
+                       
                         if(g<15){
                             
                             if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
                                 
-                                faketile[g][f]=faketile[g+1][f]-2;
+                                faketile[g][f]=faketile[g+1][f]-movnum;
                                
                             }
                             if(faketile[g][f]!=undefined){
                                 if(faketile[g+1][f]-2>faketile[g][f]){
-                                    faketile[g][f]=faketile[g+1][f]-2;
+                                    faketile[g][f]=faketile[g+1][f]-movnum;
                                 }
                             }
                             //getNextMovement(1,g,f);
@@ -296,12 +299,12 @@ function getLevel1(){
                         if(g>0){
                             
                             if(faketile[g][f]==undefined&&0<faketile[g-1][f]){
-                                faketile[g][f]=faketile[g-1][f]-2;
+                                faketile[g][f]=faketile[g-1][f]-movnum;
                                 
                             }
                             if(faketile[g][f]!=undefined){
                                 if(faketile[g-1][f]-2>faketile[g][f]){
-                                    faketile[g][f]=faketile[g-1][f]-2;
+                                    faketile[g][f]=faketile[g-1][f]-movnum;
                                 }
                             }
                             //getNextMovement(1,g,f);
@@ -310,12 +313,12 @@ function getLevel1(){
                         if(f<9){
                             
                             if(faketile[g][f]==undefined&&0<faketile[g][f+1]){
-                                faketile[g][f]=faketile[g][f+1]-2;
+                                faketile[g][f]=faketile[g][f+1]-movnum;
                                 
                             }
                             if(faketile[g][f]!=undefined){
                                 if(faketile[g][f+1]-2>faketile[g][f]){
-                                    faketile[g][f]=faketile[g][f+1]-2;
+                                    faketile[g][f]=faketile[g][f+1]-movnum;
                                 }
                             }
                             //getNextMovement(1,g,f);
@@ -324,12 +327,12 @@ function getLevel1(){
                         if(f>0){
                             
                             if(faketile[g][f]==undefined&&0<faketile[g][f-1]){
-                                faketile[g][f]=faketile[g][f-1]-2;
-                                console.log(g,f, faketile[g][f]);
+                                faketile[g][f]=faketile[g][f-1]-movnum;
+                                
                             }
                             if(faketile[g][f]!=undefined){
                                 if(faketile[g][f-1]-2>faketile[g][f]){
-                                    faketile[g][f]=faketile[g][f-1]-2;
+                                    faketile[g][f]=faketile[g][f-1]-movnum;
                                 }
                             }
                             //getNextMovement(1,g,f);
@@ -369,47 +372,20 @@ function getLevel1(){
         }
     } 
     
+    this.mytileArray[6][7]=maketile(6,7,3);
+    this.mytileArray[2][2]=maketile(2,2,3);
+    
     return gameset;
     
 };
-function getNextMovement(UnitType,localX,localY){
-    if(UnitType==1){
-        
-        let tempNum= faketile[localX][localY];
-        if(localX>0){
-            if(faketile[localX-1][localY]<faketile[localX][localY]-2){
-                faketile[localX-1][localY]=faketile[localX][localY]-2;
-            }
-        }
-        if(localX<15){
-            if(faketile[localX+1][localY]<faketile[localX][localY]-2){
-                faketile[localX+1][localY]=faketile[localX][localY]-2;
-            }
-        }
-        if(localY>0){
-            if(faketile[localX][localY-1]<faketile[localX][localY]-2){
-                faketile[localX][localY-1]=faketile[localX][localY]-2;
-            }
-        }
-        if(localY<9){
-            if(faketile[localX][localY+1]<faketile[localX][localY]-2){
-                faketile[localX][localY+1]=faketile[localX][localY]-2;
-            }
-        }
-        
-        
-    }
-    
-    
-    
-}
+
 
 function maketile(c, r,type) {
     
     var screenTile = {
         c:c,
         r:r,
-        tileType:4,
+        tileType:type,
         image : new Image(),
         update:function(ctx,x,y){
             ctx.drawImage(this.image,x+64*c,y+64*r,64, 64);
@@ -420,6 +396,34 @@ function maketile(c, r,type) {
                 return 1;
             }
             return -1;
+        },
+        clickThis : function(disX,disY){
+              
+            
+        },
+    };
+    if(type ==1){
+        screenTile.image.src="img/tileGrass.png";
+    }else if(type == 2){
+        screenTile.image.src="img/pink.png";
+    }else if(type==3){
+        screenTile.image.src="img/treePH.png";
+    }
+    return screenTile;
+    
+};
+function makeObject(c, r,type) {
+    
+    var screenTile = {
+        c:c,
+        r:r,
+        objType:type,
+        image : new Image(),
+        update:function(ctx,x,y){
+            ctx.drawImage(this.image,x+64*c,y+64*r,64, 64);
+        },
+        checkWhereClicked : function(disX,disY){
+            
         },
         clickThis : function(disX,disY){
               this.image.src="img/pink.png";
@@ -443,13 +447,23 @@ function maketile(c, r,type) {
     return screenTile;
     
 };
-
+function calculateMovement(TileType,UnitType){
+    //Tile: 1= grass, 2 =pink, 3= tree,
+    //Unit type: 1= Standard, 2=wild,3=cavalry,4=Constructed
+    
+    if(TileType==3){
+        return 10;
+        
+    }
+    return 2;
+    
+};
 function make2DArray(n,m){
     let arrayU = Array(n);
     for (let l = 0; l< n;l++){
         arrayU[l]=Array(m);
     }
-    console.log(arrayU);
+    
     return arrayU;
     
 };
