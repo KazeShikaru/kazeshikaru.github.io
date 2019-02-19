@@ -233,7 +233,8 @@ function isRealValue(obj)
 };
 var faketile =make2DArray(16,10);
 var objectTileArray = make2DArray(16,10);
-//objectTileArray[5][6]=0;
+objectTileArray[5][6]=makeObject(5,6,1);
+objectTileArray[8][5]=makeObject(8,5,1);
 function getLevel1(){
     var gameset = {
         
@@ -257,6 +258,15 @@ function getLevel1(){
             
                 }
             }
+            for (let g=0;g<mytileArray.length;g++){
+                for(let f = 0; f<mytileArray[0].length;f++){
+                    if(isRealValue(objectTileArray[g][f])){                        
+                      objectTileArray[g][f].update(ctx,elem7_6.locX,elem7_6.locY);
+                        
+                    }
+            
+                }
+            }
             
           
         },
@@ -273,72 +283,76 @@ function getLevel1(){
             //console.log(disX,disY)
             let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
             //coreTile.image.src="img/pink.png";
-            faketile[coreTile.c][coreTile.r]=9;
+            if(isRealValue(objectTileArray[coreTile.c][coreTile.r])){
+            faketile[coreTile.c][coreTile.r]=9;}
             
             for(let range2 = 6;range2>0;range2--){
                 let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
                 for (let g=0;g<mytileArray.length;g++){
                     for(let f = 0; f<mytileArray[0].length;f++){
-                        let movnum = calculateMovement(mytileArray[g][f].tileType,1);
-                       
-                        if(g<15){
-                            
-                            if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
-                                
-                                faketile[g][f]=faketile[g+1][f]-movnum;
-                               
-                            }
-                            if(faketile[g][f]!=undefined){
-                                if(faketile[g+1][f]-2>faketile[g][f]){
+                        
+
+                            let movnum = calculateMovement(mytileArray[g][f].tileType,1);
+
+                            if(g<15){
+
+                                if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
+
                                     faketile[g][f]=faketile[g+1][f]-movnum;
+
                                 }
+                                if(faketile[g][f]!=undefined){
+                                    if(faketile[g+1][f]-2>faketile[g][f]){
+                                        faketile[g][f]=faketile[g+1][f]-movnum;
+                                    }
+                                }
+                                //getNextMovement(1,g,f);
+
                             }
-                            //getNextMovement(1,g,f);
-                            
-                        }
-                        if(g>0){
-                            
-                            if(faketile[g][f]==undefined&&0<faketile[g-1][f]){
-                                faketile[g][f]=faketile[g-1][f]-movnum;
-                                
-                            }
-                            if(faketile[g][f]!=undefined){
-                                if(faketile[g-1][f]-2>faketile[g][f]){
+                            if(g>0){
+
+                                if(faketile[g][f]==undefined&&0<faketile[g-1][f]){
                                     faketile[g][f]=faketile[g-1][f]-movnum;
+
                                 }
+                                if(faketile[g][f]!=undefined){
+                                    if(faketile[g-1][f]-2>faketile[g][f]){
+                                        faketile[g][f]=faketile[g-1][f]-movnum;
+                                    }
+                                }
+                                //getNextMovement(1,g,f);
+
                             }
-                            //getNextMovement(1,g,f);
-                            
-                        }
-                        if(f<9){
-                            
-                            if(faketile[g][f]==undefined&&0<faketile[g][f+1]){
-                                faketile[g][f]=faketile[g][f+1]-movnum;
-                                
-                            }
-                            if(faketile[g][f]!=undefined){
-                                if(faketile[g][f+1]-2>faketile[g][f]){
+                            if(f<9){
+
+                                if(faketile[g][f]==undefined&&0<faketile[g][f+1]){
                                     faketile[g][f]=faketile[g][f+1]-movnum;
+
                                 }
+                                if(faketile[g][f]!=undefined){
+                                    if(faketile[g][f+1]-2>faketile[g][f]){
+                                        faketile[g][f]=faketile[g][f+1]-movnum;
+                                    }
+                                }
+                                //getNextMovement(1,g,f);
+
                             }
-                            //getNextMovement(1,g,f);
-                            
-                        }
-                        if(f>0){
-                            
-                            if(faketile[g][f]==undefined&&0<faketile[g][f-1]){
-                                faketile[g][f]=faketile[g][f-1]-movnum;
-                                
-                            }
-                            if(faketile[g][f]!=undefined){
-                                if(faketile[g][f-1]-2>faketile[g][f]){
+                            if(f>0){
+
+                                if(faketile[g][f]==undefined&&0<faketile[g][f-1]){
                                     faketile[g][f]=faketile[g][f-1]-movnum;
+
                                 }
+                                if(faketile[g][f]!=undefined){
+                                    if(faketile[g][f-1]-2>faketile[g][f]){
+                                        faketile[g][f]=faketile[g][f-1]-movnum;
+                                    }
+                                }
+                                //getNextMovement(1,g,f);
+
                             }
-                            //getNextMovement(1,g,f);
-                            
-                        }
-            
+                        
+
                     }
                 } 
             }
@@ -426,23 +440,11 @@ function makeObject(c, r,type) {
             
         },
         clickThis : function(disX,disY){
-              this.image.src="img/pink.png";
-            /*
-            console.log(Math.floor(disX/64)==this.c&&Math.floor(disY/64==this.r));
-            if(Math.abs(Math.floor(disX/64)-this.c)+Math.abs(Math.floor(disY/64)-this.r)<5){
-               console.log("True");
-                this.image.src="img/pink.png";
-            }else{
-                this.image.src="img/tileGrass.png";
-            }*/
-                 
-            
+                          
         },
     };
-    if(type ==1){
-        screenTile.image.src="img/tileGrass.png";
-    }else if(type == 2){
-        screenTile.image.src="img/pink.png";
+    if(type == 1){
+        screenTile.image.src="img/sprite.png";
     }
     return screenTile;
     
