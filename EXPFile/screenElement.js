@@ -273,19 +273,73 @@ function getLevel1(){
             let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
             //coreTile.image.src="img/pink.png";
             faketile[coreTile.c][coreTile.r]=9;
-            console.log(faketile);
-            for(let range2 = 5;range2>0;range2--){   
+            
+            for(let range2 = 6;range2>0;range2--){
+                let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
                 for (let g=0;g<mytileArray.length;g++){
                     for(let f = 0; f<mytileArray[0].length;f++){
-                        
-                        getNextMovement(1,g,f);
-                    
-                    
+                        if(g<15){
+                            
+                            if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
+                                
+                                faketile[g][f]=faketile[g+1][f]-2;
+                               
+                            }
+                            if(faketile[g][f]!=undefined){
+                                if(faketile[g+1][f]-2>faketile[g][f]){
+                                    faketile[g][f]=faketile[g+1][f]-2;
+                                }
+                            }
+                            //getNextMovement(1,g,f);
+                            
+                        }
+                        if(g>0){
+                            
+                            if(faketile[g][f]==undefined&&0<faketile[g-1][f]){
+                                faketile[g][f]=faketile[g-1][f]-2;
+                                
+                            }
+                            if(faketile[g][f]!=undefined){
+                                if(faketile[g-1][f]-2>faketile[g][f]){
+                                    faketile[g][f]=faketile[g-1][f]-2;
+                                }
+                            }
+                            //getNextMovement(1,g,f);
+                            
+                        }
+                        if(f<9){
+                            
+                            if(faketile[g][f]==undefined&&0<faketile[g][f+1]){
+                                faketile[g][f]=faketile[g][f+1]-2;
+                                
+                            }
+                            if(faketile[g][f]!=undefined){
+                                if(faketile[g][f+1]-2>faketile[g][f]){
+                                    faketile[g][f]=faketile[g][f+1]-2;
+                                }
+                            }
+                            //getNextMovement(1,g,f);
+                            
+                        }
+                        if(f>0){
+                            
+                            if(faketile[g][f]==undefined&&0<faketile[g][f-1]){
+                                faketile[g][f]=faketile[g][f-1]-2;
+                                console.log(g,f, faketile[g][f]);
+                            }
+                            if(faketile[g][f]!=undefined){
+                                if(faketile[g][f-1]-2>faketile[g][f]){
+                                    faketile[g][f]=faketile[g][f-1]-2;
+                                }
+                            }
+                            //getNextMovement(1,g,f);
+                            
+                        }
             
                     }
                 } 
             }
-            console.log(faketile);
+            
             for (let g=0;g<mytileArray.length;g++){
                     for(let f = 0; f<mytileArray[0].length;f++){
                         
@@ -391,7 +445,7 @@ function maketile(c, r,type) {
 };
 
 function make2DArray(n,m){
-    var arrayU = Array(n);
+    let arrayU = Array(n);
     for (let l = 0; l< n;l++){
         arrayU[l]=Array(m);
     }
