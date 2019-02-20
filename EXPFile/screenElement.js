@@ -346,6 +346,7 @@ function getLevel1(){
                         faketile[coreTile.c][coreTile.r]=selectedObject.moveC;
                     }else if(selectedObject.attackL>0){
                         faketile[coreTile.c][coreTile.r]=selectedObject.rangeC;
+                        cmdMenu.closeThis();
                     }else{
                         cmdMenu.closeThis();
                     }
@@ -360,7 +361,7 @@ function getLevel1(){
                     for (let g=0;g<mytileArray.length;g++){
                         for(let f = 0; f<mytileArray[0].length;f++){
 
-
+                                
                                 let movnum = calculateMovement(mytileArray[g][f].tileType,1);
 
                                 if(g<15){
