@@ -280,7 +280,7 @@ function getLevel1(){
         },
         clickThis : function(disX,disY){
             
-            if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])&&isRealValue(selectedObject)){
+            if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])){
                 
                 /*objectTileArray[selectedObject.c][selectedObject.r]=null;
                 selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
