@@ -286,46 +286,47 @@ function getLevel1(){
                 let targetY=Math.floor((disY-elem7_6.locY)/64);
                 let tempoArray=[];
                 if(isRealValue(movetileArray[targetX][targetY])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[targetX][targetY])){
-                    
-                for(let yu = 5; yu>0;yu--){
-                        if(targetX>0){
-                            if(faketile[targetX-1][targetY]>faketile[targetX][targetY]){
-                                tempoArray.unshift(-1);
-                                targetX-=1;
+                    if(selectedObject.moveL>0){
+                        for(let yu = 5; yu>0;yu--){
+                                if(targetX>0){
+                                    if(faketile[targetX-1][targetY]>faketile[targetX][targetY]){
+                                        tempoArray.unshift(-1);
+                                        targetX-=1;
+                                    }
+                                }
+                                if(targetX<15){
+                                    if(faketile[targetX+1][targetY]>faketile[targetX][targetY]){
+                                        tempoArray.unshift(1);
+                                        targetX+=1;
+                                    }
+                                }
+                                if(targetY>0){
+                                    if(faketile[targetX][targetY-1]>faketile[targetX][targetY]){
+                                        tempoArray.unshift(-2);
+                                        targetY-=1;
+                                    }
+                                }
+                                if(targetX<15){
+                                    if(faketile[targetX][targetY+1]>faketile[targetX][targetY]){
+                                        tempoArray.unshift(2);
+                                        targetY+=1;
+                                    }
+                                }
+
+
                             }
-                        }
-                        if(targetX<15){
-                            if(faketile[targetX+1][targetY]>faketile[targetX][targetY]){
-                                tempoArray.unshift(1);
-                                targetX+=1;
-                            }
-                        }
-                        if(targetY>0){
-                            if(faketile[targetX][targetY-1]>faketile[targetX][targetY]){
-                                tempoArray.unshift(-2);
-                                targetY-=1;
-                            }
-                        }
-                        if(targetX<15){
-                            if(faketile[targetX][targetY+1]>faketile[targetX][targetY]){
-                                tempoArray.unshift(2);
-                                targetY+=1;
-                            }
-                        }
-                       
+
+                        selectedObject.initMovement(tempoArray);
+
+
+
+                        objectTileArray[selectedObject.c][selectedObject.r]=null;
+                        selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
+                        selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
+
+                        objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=selectedObject;
                         
                     }
-                    
-                    selectedObject.initMovement(tempoArray);
-                    
-                    
-                    
-                    objectTileArray[selectedObject.c][selectedObject.r]=null;
-                    selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
-                    selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
-
-                    objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=selectedObject;
-
                 }
 
 
@@ -340,11 +341,18 @@ function getLevel1(){
                 if(isRealValue(objectTileArray[coreTile.c][coreTile.r])){
                     selectedObject=objectTileArray[coreTile.c][coreTile.r];
                     //console.log(selectedObject);
-                    cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
-                    faketile[coreTile.c][coreTile.r]=9;
+                    if(selectedObject.moveL>0){
+                        cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
+                        faketile[coreTile.c][coreTile.r]=selectedObject.moveC;
+                    }else if(selectedObject.attackL>0){
+                        faketile[coreTile.c][coreTile.r]=selectedObject.rangeC;
+                    }else{
+                        cmdMenu.closeThis();
+                    }
+                    //faketile[coreTile.c][coreTile.r]=selectedObject.moveC;
                 }else{
 
-                    cmdMenu.closeThis();
+                    
                 }
 
                 for(let range2 = 6;range2>0;range2--){
@@ -417,7 +425,8 @@ function getLevel1(){
                         }
                     } 
                 }
-
+                
+                if(selectedObject.moveL>0){
                 for (let g=0;g<mytileArray.length;g++){
                         for(let f = 0; f<mytileArray[0].length;f++){
 
@@ -425,15 +434,27 @@ function getLevel1(){
                                 movetileArray[g][f]=maketile(g,f,2);
                                 //mytileArray[g][f].image.src="img/pink.png";
 
+                        }
+                    }
+                } 
+                
+                
+                console.log(faketile);
+                }else if(selectedObject.attackL>0){
+                    for (let g=0;g<mytileArray.length;g++){
+                        for(let f = 0; f<mytileArray[0].length;f++){
 
+                            if(faketile[g][f]>0){
+                                movetileArray[g][f]=maketile(g,f,4);
+                                //mytileArray[g][f].image.src="img/pink.png";
 
                             }
-
-
-
                         }
                     } 
-                console.log(faketile);
+                    
+                }
+            }else{
+                
             }
         },
         
@@ -485,6 +506,8 @@ function maketile(c, r,type) {
         screenTile.image.src="img/blueT.png";
     }else if(type==3){
         screenTile.image.src="img/treePH.png";
+    }else if(type==4){
+        screenTile.image.src="img/yellowT.png";
     }
     return screenTile;
     
@@ -497,6 +520,10 @@ function makeObject(c, r,type,status) {
     screenTile.arrayC=[];
     screenTile.c=c;
     screenTile.r=r;
+    screenTile.moveL=1;
+    screenTile.attackL=1;
+    screenTile.moveC=9;
+    screenTile.rangeC=5;
     screenTile.objType = type;
     screenTile.status=status;
     screenTile.image=new Image();
@@ -510,8 +537,9 @@ function makeObject(c, r,type,status) {
             for(let g =0;g< this.arrayC.length;g++){
                 XchangeSum+=this.arrayC[g][0];
                 YchangeSum+=this.arrayC[g][1];
-                ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum,64, 64);
+                
             }
+            ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum,64, 64);
         }
     };
     
@@ -522,6 +550,7 @@ function makeObject(c, r,type,status) {
                           
         };
     screenTile.initMovement = function(arrayF){
+        this.moveL-=1;
         for(let g = 0; g< arrayF.length;g++){
             if(arrayF[g]==-1){
                 this.arrayC[g]=[-64,0];
@@ -544,24 +573,25 @@ function makeObject(c, r,type,status) {
             console.log(this.arrayC);
             if(this.arrayC[g][0]!=0){
                 if(this.arrayC[g][0]>0){
-                    this.arrayC[g][0]-=1;
+                    this.arrayC[g][0]-=4;
                     return;
                 }else{
-                    this.arrayC[g][0]+=1;
+                    this.arrayC[g][0]+=4;
                     return;
                 }
             }else if(this.arrayC[g][1]!=0){
                 if(this.arrayC[g][1]>0){
-                    this.arrayC[g][1]-=1;
+                    this.arrayC[g][1]-=4;
                     return;
                 }else{
-                    this.arrayC[g][1]+=1;
+                    this.arrayC[g][1]+=4;
                     return;
                 }
             }
 
         }
         this.moving=false;
+        
         ismoving=false;
         
     };
