@@ -233,8 +233,8 @@ function isRealValue(obj)
 };
 var faketile =make2DArray(16,10);
 var objectTileArray = make2DArray(16,10);
-objectTileArray[5][6]=makeObject(5,6,1);
-objectTileArray[8][5]=makeObject(8,5,1);
+objectTileArray[5][6]=makeObject(5,6,1,0);
+objectTileArray[8][5]=makeObject(8,5,1,0);
 var selectedObject;
 
 function getLevel1(){
@@ -279,134 +279,134 @@ function getLevel1(){
             return -1;
         },
         clickThis : function(disX,disY){
-            
-            if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])){
-                
-                /*objectTileArray[selectedObject.c][selectedObject.r]=null;
-                selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
-                selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
-                objectTileArray[selectedObject.c][selectedObject.r]=selectedObject;*/
-                
-             
-                
-                objectTileArray[selectedObject.c][selectedObject.r]=null;
-                //objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=makeObject(Math.floor((disX-elem7_6.locX)/64),Math.floor((disY-elem7_6.locY)/64),1);
-                
-                
-                selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
-                selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
-                
-                objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=selectedObject;
-                
-            }
-            
-            
-            
-            
-            movetileArray=make2DArray(16,10);
-            faketile=make2DArray(16,10);
-            
-            //console.log(disX,disY)
-            let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
-            //coreTile.image.src="img/pink.png";
-            if(isRealValue(objectTileArray[coreTile.c][coreTile.r])){
-                selectedObject=objectTileArray[coreTile.c][coreTile.r];
-                //console.log(selectedObject);
-                cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
-                faketile[coreTile.c][coreTile.r]=9;
-            }else{
-                
-                cmdMenu.closeThis();
-            }
-            
-            for(let range2 = 6;range2>0;range2--){
-                let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
-                for (let g=0;g<mytileArray.length;g++){
-                    for(let f = 0; f<mytileArray[0].length;f++){
-                        
+            if(!ismoving){
+                if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])){
 
-                            let movnum = calculateMovement(mytileArray[g][f].tileType,1);
+                    /*objectTileArray[selectedObject.c][selectedObject.r]=null;
+                    selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
+                    selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
+                    objectTileArray[selectedObject.c][selectedObject.r]=selectedObject;*/
 
-                            if(g<15){
 
-                                if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
 
-                                    faketile[g][f]=faketile[g+1][f]-movnum;
+                    objectTileArray[selectedObject.c][selectedObject.r]=null;
+                    //objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=makeObject(Math.floor((disX-elem7_6.locX)/64),Math.floor((disY-elem7_6.locY)/64),1);
 
-                                }
-                                if(faketile[g][f]!=undefined){
-                                    if(faketile[g+1][f]-2>faketile[g][f]){
+
+                    selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
+                    selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
+
+                    objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=selectedObject;
+
+                }
+
+
+
+
+                movetileArray=make2DArray(16,10);
+                faketile=make2DArray(16,10);
+
+                //console.log(disX,disY)
+                let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
+                //coreTile.image.src="img/pink.png";
+                if(isRealValue(objectTileArray[coreTile.c][coreTile.r])){
+                    selectedObject=objectTileArray[coreTile.c][coreTile.r];
+                    //console.log(selectedObject);
+                    cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
+                    faketile[coreTile.c][coreTile.r]=9;
+                }else{
+
+                    cmdMenu.closeThis();
+                }
+
+                for(let range2 = 6;range2>0;range2--){
+                    let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
+                    for (let g=0;g<mytileArray.length;g++){
+                        for(let f = 0; f<mytileArray[0].length;f++){
+
+
+                                let movnum = calculateMovement(mytileArray[g][f].tileType,1);
+
+                                if(g<15){
+
+                                    if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
+
                                         faketile[g][f]=faketile[g+1][f]-movnum;
+
                                     }
-                                }
-                                //getNextMovement(1,g,f);
-
-                            }
-                            if(g>0){
-
-                                if(faketile[g][f]==undefined&&0<faketile[g-1][f]){
-                                    faketile[g][f]=faketile[g-1][f]-movnum;
+                                    if(faketile[g][f]!=undefined){
+                                        if(faketile[g+1][f]-2>faketile[g][f]){
+                                            faketile[g][f]=faketile[g+1][f]-movnum;
+                                        }
+                                    }
+                                    //getNextMovement(1,g,f);
 
                                 }
-                                if(faketile[g][f]!=undefined){
-                                    if(faketile[g-1][f]-2>faketile[g][f]){
+                                if(g>0){
+
+                                    if(faketile[g][f]==undefined&&0<faketile[g-1][f]){
                                         faketile[g][f]=faketile[g-1][f]-movnum;
+
                                     }
-                                }
-                                //getNextMovement(1,g,f);
-
-                            }
-                            if(f<9){
-
-                                if(faketile[g][f]==undefined&&0<faketile[g][f+1]){
-                                    faketile[g][f]=faketile[g][f+1]-movnum;
+                                    if(faketile[g][f]!=undefined){
+                                        if(faketile[g-1][f]-2>faketile[g][f]){
+                                            faketile[g][f]=faketile[g-1][f]-movnum;
+                                        }
+                                    }
+                                    //getNextMovement(1,g,f);
 
                                 }
-                                if(faketile[g][f]!=undefined){
-                                    if(faketile[g][f+1]-2>faketile[g][f]){
+                                if(f<9){
+
+                                    if(faketile[g][f]==undefined&&0<faketile[g][f+1]){
                                         faketile[g][f]=faketile[g][f+1]-movnum;
+
                                     }
-                                }
-                                //getNextMovement(1,g,f);
-
-                            }
-                            if(f>0){
-
-                                if(faketile[g][f]==undefined&&0<faketile[g][f-1]){
-                                    faketile[g][f]=faketile[g][f-1]-movnum;
+                                    if(faketile[g][f]!=undefined){
+                                        if(faketile[g][f+1]-2>faketile[g][f]){
+                                            faketile[g][f]=faketile[g][f+1]-movnum;
+                                        }
+                                    }
+                                    //getNextMovement(1,g,f);
 
                                 }
-                                if(faketile[g][f]!=undefined){
-                                    if(faketile[g][f-1]-2>faketile[g][f]){
+                                if(f>0){
+
+                                    if(faketile[g][f]==undefined&&0<faketile[g][f-1]){
                                         faketile[g][f]=faketile[g][f-1]-movnum;
+
                                     }
+                                    if(faketile[g][f]!=undefined){
+                                        if(faketile[g][f-1]-2>faketile[g][f]){
+                                            faketile[g][f]=faketile[g][f-1]-movnum;
+                                        }
+                                    }
+                                    //getNextMovement(1,g,f);
+
                                 }
-                                //getNextMovement(1,g,f);
+
+
+                        }
+                    } 
+                }
+
+                for (let g=0;g<mytileArray.length;g++){
+                        for(let f = 0; f<mytileArray[0].length;f++){
+
+                            if(faketile[g][f]>0){
+                                movetileArray[g][f]=maketile(g,f,2);
+                                //mytileArray[g][f].image.src="img/pink.png";
+
+
 
                             }
-                        
 
-                    }
-                } 
-            }
-            
-            for (let g=0;g<mytileArray.length;g++){
-                    for(let f = 0; f<mytileArray[0].length;f++){
-                        
-                        if(faketile[g][f]>0){
-                            movetileArray[g][f]=maketile(g,f,2);
-                            //mytileArray[g][f].image.src="img/pink.png";
-                            
-                            
-                            
+
+
                         }
-                    
-                    
-            
-                    }
-                } 
-            console.log(faketile);
-            
+                    } 
+                console.log(faketile);
+            }
         },
         
     };
@@ -431,10 +431,7 @@ function getLevel1(){
 function maketile(c, r,type) {
     
     var screenTile = {
-        c:c,
-        r:r,
-        tileType:type,
-        image : new Image(),
+        
         update:function(ctx,x,y){
             ctx.drawImage(this.image,x+64*c,y+64*r,64, 64);
         },
@@ -450,6 +447,10 @@ function maketile(c, r,type) {
             
         },
     };
+    screenTile.c=c;
+    screenTile.r=r;
+    screenTile.tileType = type;
+    screenTile.image=new Image();
     if(type ==1){
         screenTile.image.src="img/tileGrass.png";
     }else if(type == 2){
@@ -460,23 +461,26 @@ function maketile(c, r,type) {
     return screenTile;
     
 };
-function makeObject(c, r,type) {
+function makeObject(c, r,type,status) {
     
-    var screenTile = {
-        c:c,
-        r:r,
-        objType:type,
-        image : new Image(),
-        update:function(ctx,x,y){
-            ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);
-        },
-        checkWhereClicked : function(disX,disY){
-            
-        },
-        clickThis : function(disX,disY){
-                          
-        },
+    var screenTile = {       
     };
+    screenTile.c=c;
+    screenTile.r=r;
+    screenTile.objType = type;
+    screenTile.status=status;
+    screenTile.image=new Image();
+    screenTile.update=function(ctx,x,y){
+            ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);
+        };
+    
+    screenTile.checkWhereClicked = function(disX,disY){
+            
+        };
+    screenTile.clickThis = function(disX,disY){
+                          
+        };
+    
     if(type == 1){
         screenTile.image.src="img/sprite.png";
     }
