@@ -35,13 +35,15 @@
     ///////////////////////////////////////////////////////////éééééé
     //<audio style="display:none" id="f2" allow="autoplay"  src="music/Emotions.mp3" autoplay>
     var tutorial=0;
-        
+    
+    
     var EFsound = 0;   
     var loading = 0;
     var textLeft = 5;
     var theMainText = ScriptText(9);
     var transit = false;
     
+    //map dragging
     var canDrag = false;
     var mouseDown = false;
     var downMX = 0;
@@ -49,10 +51,16 @@
     var downBX = 0;
     var downBY = 0;
     
+    //cmd menu
     var cmdOpen=false;
     var cmdLock=true;
+        
+    //combat movement animation
+    var ismoving = false;
+        
+    //skill screen
     var skillopen = false;
-    var skillchara = 0;
+    var skillchara = 0;//currently skilling character
     ////////////////////////////////////////////
     var wall = ScrEle(-981,0,981,600,"img/street.jpg","s1");
     

@@ -280,19 +280,17 @@ function getLevel1(){
         },
         clickThis : function(disX,disY){
             if(!ismoving){
-                if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])){
-
-                    /*objectTileArray[selectedObject.c][selectedObject.r]=null;
-                    selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
-                    selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
-                    objectTileArray[selectedObject.c][selectedObject.r]=selectedObject;*/
-
-
-
+                let targetX=Math.floor((disX-elem7_6.locX)/64);
+                let targetY=Math.floor((disY-elem7_6.locY)/64);
+                let tempoArray;
+                if(isRealValue(movetileArray[targetX][targetY])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[targetX][targetY])){
+                    
+                    while(true){
+                        let thistemptile = faketile[targetX][targetY];
+                        break;
+                        
+                    }
                     objectTileArray[selectedObject.c][selectedObject.r]=null;
-                    //objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=makeObject(Math.floor((disX-elem7_6.locX)/64),Math.floor((disY-elem7_6.locY)/64),1);
-
-
                     selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
                     selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
 
@@ -454,7 +452,7 @@ function maketile(c, r,type) {
     if(type ==1){
         screenTile.image.src="img/tileGrass.png";
     }else if(type == 2){
-        screenTile.image.src="img/pink.png";
+        screenTile.image.src="img/blueT.png";
     }else if(type==3){
         screenTile.image.src="img/treePH.png";
     }
@@ -480,7 +478,12 @@ function makeObject(c, r,type,status) {
     screenTile.clickThis = function(disX,disY){
                           
         };
-    
+    screenTile.initMovement = function(arrayC){
+        this.arrayC=arrayC;         
+        };
+     screenTile.move = function(arrayC){
+        this.arrayC=arrayC;         
+        };
     if(type == 1){
         screenTile.image.src="img/sprite.png";
     }
