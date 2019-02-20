@@ -260,6 +260,8 @@ function getLevel1(){
             
                 }
             }
+            
+            
             for (let g=0;g<mytileArray.length;g++){
                 for(let f = 0; f<mytileArray[0].length;f++){
                     if(isRealValue(objectTileArray[g][f])){                        
@@ -282,14 +284,42 @@ function getLevel1(){
             if(!ismoving){
                 let targetX=Math.floor((disX-elem7_6.locX)/64);
                 let targetY=Math.floor((disY-elem7_6.locY)/64);
-                let tempoArray;
+                let tempoArray=[];
                 if(isRealValue(movetileArray[targetX][targetY])&&isRealValue(selectedObject)&&!isRealValue(objectTileArray[targetX][targetY])){
                     
-                    while(true){
-                        let thistemptile = faketile[targetX][targetY];
-                        break;
+                for(let yu = 5; yu>0;yu--){
+                        if(targetX>0){
+                            if(faketile[targetX-1][targetY]>faketile[targetX][targetY]){
+                                tempoArray.unshift(-1);
+                                targetX-=1;
+                            }
+                        }
+                        if(targetX<15){
+                            if(faketile[targetX+1][targetY]>faketile[targetX][targetY]){
+                                tempoArray.unshift(1);
+                                targetX+=1;
+                            }
+                        }
+                        if(targetY>0){
+                            if(faketile[targetX][targetY-1]>faketile[targetX][targetY]){
+                                tempoArray.unshift(-2);
+                                targetY-=1;
+                            }
+                        }
+                        if(targetX<15){
+                            if(faketile[targetX][targetY+1]>faketile[targetX][targetY]){
+                                tempoArray.unshift(2);
+                                targetY+=1;
+                            }
+                        }
+                       
                         
                     }
+                    
+                    selectedObject.initMovement(tempoArray);
+                    
+                    
+                    
                     objectTileArray[selectedObject.c][selectedObject.r]=null;
                     selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
                     selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
@@ -463,14 +493,27 @@ function makeObject(c, r,type,status) {
     
     var screenTile = {       
     };
+    screenTile.moving=false;
+    screenTile.arrayC=[];
     screenTile.c=c;
     screenTile.r=r;
     screenTile.objType = type;
     screenTile.status=status;
     screenTile.image=new Image();
     screenTile.update=function(ctx,x,y){
+        if(!this.moving){
             ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);
-        };
+        }else{
+            this.move();
+            let XchangeSum=0;
+            let YchangeSum=0;
+            for(let g =0;g< this.arrayC.length;g++){
+                XchangeSum+=this.arrayC[g][0];
+                YchangeSum+=this.arrayC[g][1];
+                ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum,64, 64);
+            }
+        }
+    };
     
     screenTile.checkWhereClicked = function(disX,disY){
             
@@ -478,12 +521,50 @@ function makeObject(c, r,type,status) {
     screenTile.clickThis = function(disX,disY){
                           
         };
-    screenTile.initMovement = function(arrayC){
-        this.arrayC=arrayC;         
+    screenTile.initMovement = function(arrayF){
+        for(let g = 0; g< arrayF.length;g++){
+            if(arrayF[g]==-1){
+                this.arrayC[g]=[-64,0];
+            }else if(arrayF[g]==1){
+                this.arrayC[g]=[64,0];
+            }else if(arrayF[g]==2){
+                this.arrayC[g]=[0,64];
+            }else if(arrayF[g]=-2){
+                this.arrayC[g]=[0,-64];
+            }
+           
+        }
+        this.moving=true;
+        console.log(arrayF);
+        console.log(this.arrayC);
         };
-     screenTile.move = function(arrayC){
-        this.arrayC=arrayC;         
-        };
+    
+    screenTile.move = function(){
+        for(let g = 0;g<this.arrayC.length;g++){
+            console.log(this.arrayC);
+            if(this.arrayC[g][0]!=0){
+                if(this.arrayC[g][0]>0){
+                    this.arrayC[g][0]-=1;
+                    return;
+                }else{
+                    this.arrayC[g][0]+=1;
+                    return;
+                }
+            }else if(this.arrayC[g][1]!=0){
+                if(this.arrayC[g][1]>0){
+                    this.arrayC[g][1]-=1;
+                    return;
+                }else{
+                    this.arrayC[g][1]+=1;
+                    return;
+                }
+            }
+
+        }
+        this.moving=false;
+        ismoving=false;
+        
+    };
     if(type == 1){
         screenTile.image.src="img/sprite.png";
     }
