@@ -263,7 +263,7 @@ function getLevel1(){
             for (let g=0;g<mytileArray.length;g++){
                 for(let f = 0; f<mytileArray[0].length;f++){
                     if(isRealValue(objectTileArray[g][f])){                        
-                      objectTileArray[g][f].update(ctx,elem7_6.locX,elem7_6.locY);
+                     objectTileArray[g][f].update(ctx,elem7_6.locX,elem7_6.locY);
                         
                     }
             
@@ -280,13 +280,27 @@ function getLevel1(){
         },
         clickThis : function(disX,disY){
             
-            if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])){
-                //objectTileArray[selectedObject.c][selectedObject.r]=null;
-                //selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
-                //selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
-                //objectTileArray[selectedObject.c][selectedObject.r]=selectedObject;
-               
+            if(isRealValue(movetileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)])&&isRealValue(selectedObject)){
+                
+                /*objectTileArray[selectedObject.c][selectedObject.r]=null;
+                selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
+                selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
+                objectTileArray[selectedObject.c][selectedObject.r]=selectedObject;*/
+                
+             
+                
+                objectTileArray[selectedObject.c][selectedObject.r]=null;
+                //objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=makeObject(Math.floor((disX-elem7_6.locX)/64),Math.floor((disY-elem7_6.locY)/64),1);
+                
+                
+                selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
+                selectedObject.r=Math.floor((disY-elem7_6.locY)/64);
+                
+                objectTileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)]=selectedObject;
+                
             }
+            
+            
             
             
             movetileArray=make2DArray(16,10);
@@ -297,7 +311,7 @@ function getLevel1(){
             //coreTile.image.src="img/pink.png";
             if(isRealValue(objectTileArray[coreTile.c][coreTile.r])){
                 selectedObject=objectTileArray[coreTile.c][coreTile.r];
-                console.log(selectedObject);
+                //console.log(selectedObject);
                 cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
                 faketile[coreTile.c][coreTile.r]=9;
             }else{
@@ -406,6 +420,7 @@ function getLevel1(){
     } 
     
     this.mytileArray[6][7]=maketile(6,7,3);
+    this.mytileArray[6][8]=maketile(6,8,3);
     this.mytileArray[2][2]=maketile(2,2,3);
     
     return gameset;
@@ -453,7 +468,7 @@ function makeObject(c, r,type) {
         objType:type,
         image : new Image(),
         update:function(ctx,x,y){
-            ctx.drawImage(this.image,x+64*c,y+64*r,64, 64);
+            ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);
         },
         checkWhereClicked : function(disX,disY){
             
