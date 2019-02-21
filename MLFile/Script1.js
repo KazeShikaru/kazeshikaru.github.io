@@ -10,8 +10,8 @@ function setup(){
     background(100);
     canv.drop(gotFile);
     mobilenet  = new ml5.imageClassifier('MobileNet',modelReady);
-    canv.mousePressed(changeGray);
-    canv.mouseReleased(stopGray);
+    //canv.mousePressed(changeGray);
+    //canv.mouseReleased(stopGray);
     clearSoup();
     frameRate(120);
     
@@ -30,7 +30,17 @@ function gotFile(file) {
     console.log('Not an image file!');
   }
 }
-
+function gotFile(file) {
+  // If it's an image file
+  if (file.type === 'image') {
+    // Create an image DOM element but don't show it
+    const img = createImg(file.data).hide();
+    // Draw the image onto the canvas
+    image(img, 0, 0, width, height);
+  } else {
+    console.log('Not an image file!');
+  }
+}
 function mouseDragged() 
 { 
     
