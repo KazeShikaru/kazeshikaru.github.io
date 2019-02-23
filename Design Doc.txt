@@ -19,7 +19,7 @@ Non-goals: Attracting an active userbase.
 
 Milestones in no certain order:
 [Saving mechanics](Reward: 1 coffee)
-[Movement mechanics](Reward: 1 coffee)
+[Movement mechanics]//completed (FEB 2019)
 [Skill tree](Reward: 1 coffee)
 [Character Class and Stats](Reward: 1 coffee)
 [Enemy balancing](Reward: 1 coffee)
