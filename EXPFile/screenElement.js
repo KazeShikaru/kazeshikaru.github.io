@@ -1,4 +1,4 @@
-
+var minahtml = document.getElementById("minaImage");
 function ScrEle(x, y, width, length, file,name) {
     
     var screenEl = {
@@ -235,6 +235,7 @@ var faketile =make2DArray(16,10);
 var objectTileArray = make2DArray(16,10);
 objectTileArray[5][6]=makeObject(5,6,1,0);
 objectTileArray[8][5]=makeObject(8,5,1,0);
+objectTileArray[10][4]=makeObject(10,4,10,0);
 var selectedObject;
 
 function getLevel1(){
@@ -530,7 +531,12 @@ function makeObject(c, r,type,status) {
     screenTile.image=new Image();
     screenTile.update=function(ctx,x,y){
         if(!this.moving){
-            ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);
+            if(type>9){
+                ctx.drawImage(this.image,x+64*this.c,y+64*this.r-32,64, 96);
+                minahtml.style.left=x+64*this.c+soup.getBoundingClientRect().left+"px";
+                minahtml.style.top=y+64*this.r+soup.getBoundingClientRect().top-32+"px";
+            }else{
+            ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);}
         }else{
             this.move();
             let XchangeSum=0;
@@ -539,8 +545,12 @@ function makeObject(c, r,type,status) {
                 XchangeSum+=this.arrayC[g][0];
                 YchangeSum+=this.arrayC[g][1];
                 
-            }
-            ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum,64, 64);
+            }if(type>9){
+                ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum-32,64, 96);
+                minahtml.style.left=x+64*this.c+soup.getBoundingClientRect().left+XchangeSum+"px";
+                minahtml.style.top=y+64*this.r+soup.getBoundingClientRect().top-32+YchangeSum+"px";
+            }else{ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum,64, 64);
+                 }
         }
     };
     
@@ -598,6 +608,8 @@ function makeObject(c, r,type,status) {
     };
     if(type == 1){
         screenTile.image.src="img/sprite.png";
+    }else if(type == 10){
+        screenTile.image.src="img/mina_sprite.png";
     }
     return screenTile;
     

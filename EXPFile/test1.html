@@ -7,7 +7,7 @@
 <body onresize="resize()">
     
     
-      
+    <img id="minaImage" src="img/mina_sprite.png" style="position: absolute;width: 64;height: 96;top: 60px;left: 60px">
     <audio autoplay id = "sound1" oncanplay = "">
         <source id = "soundSource1" src="music/Emotions.mp3" type="audio/mpeg"volume="0.1">
     </audio>
@@ -25,7 +25,12 @@
     </audio>
     
     <p id="demo" style="color:white">Soup</p>
-    <canvas id="myCanvas" width="971" height="600"></canvas>
+    <canvas id="myCanvas" width="971" height="600" style="
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+"></canvas>
     <!--<script src="main.js"></script>-->
     <script src="screenElement.js"></script>
     <script src="variables.js"></script>
