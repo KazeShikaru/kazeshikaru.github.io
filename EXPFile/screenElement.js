@@ -1,4 +1,5 @@
 var minahtml = document.getElementById("minaImage");
+var attacker;
 function ScrEle(x, y, width, length, file,name) {
     
     var screenEl = {
@@ -229,7 +230,7 @@ function ScriptText(re) {
 };
 function isRealValue(obj)
 {
- return obj && obj !== 'null' && obj !== 'undefined';
+    return obj && obj !== 'null' && obj !== 'undefined';
 };
 var faketile =make2DArray(16,10);
 var objectTileArray = make2DArray(16,10);
@@ -313,13 +314,9 @@ function getLevel1(){
                                         targetY+=1;
                                     }
                                 }
-
-
                             }
 
                         selectedObject.initMovement(tempoArray);
-
-
 
                         objectTileArray[selectedObject.c][selectedObject.r]=null;
                         selectedObject.c=Math.floor((disX-elem7_6.locX)/64);
@@ -336,38 +333,38 @@ function getLevel1(){
                 movetileArray=make2DArray(16,10);
                 faketile=make2DArray(16,10);
 
-                //console.log(disX,disY)
+                
                 let coreTile = mytileArray[Math.floor((disX-elem7_6.locX)/64)][Math.floor((disY-elem7_6.locY)/64)];
                 //coreTile.image.src="img/pink.png";
                 if(isRealValue(objectTileArray[coreTile.c][coreTile.r])){
                     selectedObject=objectTileArray[coreTile.c][coreTile.r];
-                    //console.log(selectedObject);
+                    
                     if(selectedObject.moveL>0){
-                        cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
+                        
                         faketile[coreTile.c][coreTile.r]=selectedObject.moveC;
+                        cmdMenu.closeThis();
                     }else if(selectedObject.attackL>0){
                         faketile[coreTile.c][coreTile.r]=selectedObject.rangeC;
-                        cmdMenu.closeThis();
+                        cmdMenu.openThis(event.clientX-rect.left,event.clientY-rect.top);
                     }else{
                         cmdMenu.closeThis();
                     }
-                    //faketile[coreTile.c][coreTile.r]=selectedObject.moveC;
+                   
                 }else{
-
+                    
                     
                 }
-
-                for(let range2 = 6;range2>0;range2--){
-                    let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
+                //rangeCalculator for both movement and range
+                for(let range2 = 10;range2>0;range2--){
+                    //let fakeTempTiles=make2DArray(mytileArray.length,mytileArray.length[0]);
                     for (let g=0;g<mytileArray.length;g++){
                         for(let f = 0; f<mytileArray[0].length;f++){
-
-                                
+                            
                                 let movnum = calculateMovement(mytileArray[g][f].tileType,1);
 
                                 if(g<15){
 
-                                    if(faketile[g][f]==undefined&&0<faketile[g+1][f]){
+                                    if(faketile[g][f]==undefined && 0<faketile[g+1][f]){
 
                                         faketile[g][f]=faketile[g+1][f]-movnum;
 
@@ -427,7 +424,7 @@ function getLevel1(){
                         }
                     } 
                 }
-                
+                //movement tiles
                 if(selectedObject.moveL>0){
                 for (let g=0;g<mytileArray.length;g++){
                         for(let f = 0; f<mytileArray[0].length;f++){
@@ -442,6 +439,7 @@ function getLevel1(){
                 
                 
                 console.log(faketile);
+                //attack tiles
                 }else if(selectedObject.attackL>0){
                     for (let g=0;g<mytileArray.length;g++){
                         for(let f = 0; f<mytileArray[0].length;f++){
@@ -520,12 +518,18 @@ function makeObject(c, r,type,status) {
     };
     screenTile.moving=false;
     screenTile.arrayC=[];
+    screenTile.attackSelected=false;
     screenTile.c=c;
     screenTile.r=r;
     screenTile.moveL=1;
     screenTile.attackL=1;
-    screenTile.moveC=9;
-    screenTile.rangeC=5;
+    if(type<10){
+       screenTile.moveC=9; 
+    }else{
+       screenTile.moveC=13; 
+    }
+    
+    screenTile.rangeC=12;
     screenTile.objType = type;
     screenTile.status=status;
     screenTile.image=new Image();
@@ -533,8 +537,7 @@ function makeObject(c, r,type,status) {
         if(!this.moving){
             if(type>9){
                 ctx.drawImage(this.image,x+64*this.c,y+64*this.r-32,64, 96);
-                minahtml.style.left=x+64*this.c+soup.getBoundingClientRect().left+"px";
-                minahtml.style.top=y+64*this.r+soup.getBoundingClientRect().top-32+"px";
+                
             }else{
             ctx.drawImage(this.image,x+64*this.c,y+64*this.r,64, 64);}
         }else{
@@ -547,8 +550,8 @@ function makeObject(c, r,type,status) {
                 
             }if(type>9){
                 ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum-32,64, 96);
-                minahtml.style.left=x+64*this.c+soup.getBoundingClientRect().left+XchangeSum+"px";
-                minahtml.style.top=y+64*this.r+soup.getBoundingClientRect().top-32+YchangeSum+"px";
+                
+                
             }else{ctx.drawImage(this.image,x+64*this.c+XchangeSum,y+64*this.r+YchangeSum,64, 64);
                  }
         }
@@ -615,6 +618,17 @@ function makeObject(c, r,type,status) {
     
 };
 function calculateMovement(TileType,UnitType){
+    //Tile: 1= grass, 2 =pink, 3= tree,
+    //Unit type: 1= Standard, 2=wild,3=cavalry,4=Constructed
+    
+    if(TileType==3){
+        return 10;
+        
+    }
+    return 2;
+    
+};
+function calculateAttack(TileType,UnitType){
     //Tile: 1= grass, 2 =pink, 3= tree,
     //Unit type: 1= Standard, 2=wild,3=cavalry,4=Constructed
     
