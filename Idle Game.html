@@ -20,9 +20,10 @@ img.resize {
 }
 <script>
 var x = 5;
+var y = 1;
 function incrementScore() {
-    x=x+1;
-    document.getElementById('demo').innerHTML ='your money count: ' + x; 
+    x=x+y;
+    document.getElementById('demo').innerHTML ='your count: ' + x; 
 }
 setInterval(incrementScore, 1000);
 </script>
@@ -30,10 +31,12 @@ setInterval(incrementScore, 1000);
         this is head two
     </p>
 
-    <button type="button"
-onclick="document.getElementById('demo').innerHTML ='your money count: ' + x , x++">
-Get More X
-</button>
+    <button type="button" onclick="document.getElementById('demo').innerHTML ='your count: ' + x , x++">
+        Get More X
+    </button>
+    <button type="button" onclick="document.getElementById('demo').innerHTML ='your y: ' + y , y++">
+        Get More Y
+    </button>
 <p id="demo"></p>
 </body>
 </html>
