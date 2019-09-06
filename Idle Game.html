@@ -26,6 +26,12 @@ function incrementScore() {
     document.getElementById('demo').innerHTML ='your count: ' + x; 
 }
 setInterval(incrementScore, 1000);
+
+function buyUpgrade(){
+    if(x>5){ y++;x-=20;}
+}
+
+
 </script>
     <p>
         this is head two
@@ -34,9 +40,10 @@ setInterval(incrementScore, 1000);
     <button type="button" onclick="document.getElementById('demo').innerHTML ='your count: ' + x , x++">
         Get More X
     </button>
-    <button type="button" onclick="document.getElementById('demo').innerHTML ='your y: ' + y , y++">
+    <button type="button" onclick="document.getElementById('increment').innerHTML ='your y: ' + y ,buyUpgrade() ">
         Get More Y
     </button>
 <p id="demo"></p>
+<p id="increment"></p>
 </body>
 </html>
